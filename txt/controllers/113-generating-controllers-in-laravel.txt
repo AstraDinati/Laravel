@@ -1,0 +1,14 @@
+Генерация контроллеров в Laravel
+Создавать контроллеры вручную не очень эффективно. Лучше использовать для этого генератор кода artisan. Он автоматически создаст файл с 
+нужным классом и пропишет в нем пространство имен и нужные зависимости.
+
+Давайте для примера создадим CityController:
+
+php artisan make:controller CityController
+№1⊗pplrPmCnGn
+
+С помощью artisan создайте контроллер ArticleController.
+
+№2⊗pplrPmCnGn
+
+С помощью artisan создайте контроллер CategoryController.

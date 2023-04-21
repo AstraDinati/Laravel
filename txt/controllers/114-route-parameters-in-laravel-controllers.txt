@@ -1,0 +1,24 @@
+Параметры маршрутов в контроллерах Laravel
+Давайте теперь добавим к нашему маршруту параметр:
+
+<?php
+	Route::get('/post/{id}', [PostController::class, 'show']);
+?>
+Переданный параметр будет попадать в параметр метода нашего действия:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show($id)
+		{
+			return 'post ' . $id;
+		}
+	}
+?>
+№1⊗pplrPmCnPr
+
+Сделайте маршрут, обрабатывающий адреса вида /user/:name.
+
+№2⊗pplrPmCnPr
+
+Сделайте маршрут, обрабатывающий адреса вида /user/:surname/:name.

@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +23,15 @@ Route::get('/', function () {
 Route::get('/user/{id}', function ($id) {
     return 'user/{id} ' . $id;
 });
+
+// Route::get('/post/',['App\\Http\\Controllers\\PostController', 'show']);
+Route::get('/post/{id}', [PostController::class, 'show']);
+
+Route::get('/user/{name}', [UserController::class, 'show']);
+
+Route::get('/user/{name}/{surname?}', [UserController::class, 'show']);
+
+Route::get('/user/all', [UserController::class, 'all']);
 
 // Route::get('/user/{surname}/{name}', function ($surname, $name) {
 //     return '/user/{surname}/{name} ' . $surname .' '. $name;
