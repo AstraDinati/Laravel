@@ -1,0 +1,36 @@
+Группировка маршрутов в Laravel
+Можно группировать маршруты, адреса которых начинаются на одинаковую часть. Давайте посмотрим на примере. Пусть у нас 
+есть такие адреса:
+
+<?php
+	Route::get('/blog/post/all', function ($id) {
+		return 'all';
+	});
+	Route::get('/blog/post/{id}', function ($id) {
+		return $id;
+	});
+?>
+Вынесем общую часть:
+
+<?php
+	Route::prefix('blog')->group(function () {
+		Route::get('/post/all', function ($id) {
+			return 'all';
+		});
+		Route::get('/post/{id}', function ($id) {
+			return $id;
+		});
+	});
+?>
+№1⊗pplrPmRtRG
+
+Сгрупируйте следующие маршруты:
+
+<?php
+	Route::get('/admin/users', function ($id) {
+		return 'all';
+	});
+	Route::get('/admin/user/{id}', function ($id) {
+		return $id;
+	});
+?>

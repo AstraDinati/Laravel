@@ -1,0 +1,137 @@
+Разрешение конфликтов маршрутов в Laravel
+Laravel проверяет маршруты по порядку их записи. Если найден подходящий маршрут, то дальнейшая проверка прекращается.
+
+Из-за этого маршруты могут конфликтовать друг с другом. Например, в следующем примере второй маршут никогда не будет 
+достигнут, так обращение к нему будет перехвачено первым маршрутом:
+
+<?php
+	Route::get('/post/{id}', function ($id) {
+		return 'id';
+	});
+	Route::get('/post/all', function () {
+		return 'all';
+	});
+?>
+Для избежания конфликтов следует писать более частные случаи маршрутов вначале, а потом - более общие. Поменяем 
+порядок следования наших маршрутов и проблема исчезнет:
+
+<?php
+	Route::get('/post/all', function () {
+		return 'all';
+	});
+	Route::get('/post/{id}', function ($id) {
+		return 'id';
+	});
+?>
+Можно также наложить ограничение на параметры. В этом случае причина конфликта исчезнет. Давайте укажем, что наши id 
+должны быть числами. В этом случае второй маршрут уже не будет частным случаем первого и все будет работать верно:
+
+<?php
+	Route::get('/post/{id}', function ($id) {
+		return 'id';
+	})->where('id', '[0-9]+');
+	Route::get('/post/all', function () {
+		return 'all';
+	});
+?>
+№1⊗pplrPmRtRC
+
+Разрулите конфликт маршрутов:
+
+<?php
+	Route::get('/user/{id}', function ($id) {
+		return 'id';
+	});
+	Route::get('/user/all', function () {
+		return 'all';
+	});
+?>
+
+hw
+<?php
+	Route::get('/user/all', function () {
+		return 'all';
+	});
+	Route::get('/user/{id}', function ($id) {
+		return 'id';
+	});
+\\
+№2⊗pplrPmRtRC
+
+Разрулите конфликт маршрутов:
+
+<?php
+	Route::get('/user/{id?}', function ($id = null) {
+		return 'id';
+	});
+	Route::get('/user/', function () {
+		return 'user';
+	});
+	Route::get('/user/all', function () {
+		return 'all';
+	});
+?>
+
+hw
+<?php
+	Route::get('/user/', function () {
+		return 'user';
+	});
+    	Route::get('/user/all', function () {
+		return 'all';
+	});
+	Route::get('/user/{id?}', function ($id = null) {
+		return 'id';
+	});
+\\
+№3⊗pplrPmRtRC
+
+Разрулите конфликт маршрутов:
+
+<?php
+	Route::get('/user/{name}/{id?}', function ($name, $id) {
+		return 'name id';
+	});
+	Route::get('/user/all', function () {
+		return 'all';
+	});
+	Route::get('/user/all/desc', function () {
+		return 'all desc';
+	});
+?>
+
+hw
+<?php
+	Route::get('/user/all', function () {
+		return 'all';
+	});
+	Route::get('/user/all/desc', function () {
+		return 'all desc';
+	});
+    	Route::get('/user/{name}/{id?}', function ($name, $id) {
+		return 'name id';
+	})->where('id', '[0-9]+');
+\\
+№4⊗pplrPmRtRC
+
+Разрулите конфликт маршрутов:
+
+<?php
+	Route::get('/user/{id}', function ($id) {
+		return 'id';
+	})->where('slug', '[a-z0-9_-]+');
+	Route::get('/user/{id}', function ($id) {
+		return 'id';
+	})->where('id', '[0-9]+');
+?>
+
+hw
+<?php
+	Route::get('/user/{id}', function ($id) {
+		return 'id';
+	})->where('id', '[0-9]+');
+	Route::get('/user/{id}', function ($id) {
+		return 'id';
+	})->where('slug', '[a-z0-9_-]+');
+?>
+\\

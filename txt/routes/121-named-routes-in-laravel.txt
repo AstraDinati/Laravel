@@ -1,0 +1,33 @@
+Именованные маршруты в Laravel
+Маршрутам можно давать имена. Эти имена в дальнейшем могут быть использованы для различных целей. Давайте посмотрим 
+на примере. Пусть дан такой маршрут:
+
+<?php
+	Route::get('/post/all', function () {
+		return 'all';
+	});
+?>
+Давайте дадим ему имя:
+
+<?php
+	Route::get('/post/all', function () {
+		return 'all';
+	})->name('posts');
+?>
+№1⊗pplrPmRtNR
+
+Дайте имя следующему маршруту:
+
+<?php
+	Route::get('/user/profile', function () {
+		return 'profile';
+	});
+?>
+
+hw
+<?php
+	Route::get('/user/profile', function () {
+		return 'profile';
+	})->name(userProfile);
+?>
+\\
