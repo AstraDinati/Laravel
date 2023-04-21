@@ -20,16 +20,20 @@ Route::get('/', function () {
     return '!!!';
 });
 
+// Route::get('/post/',['App\\Http\\Controllers\\PostController', 'show']);
+Route::get('/post/{id}', [PostController::class, 'show']);
+
 Route::get('/user/{id}', function ($id) {
     return 'user/{id} ' . $id;
 });
 
-// Route::get('/post/',['App\\Http\\Controllers\\PostController', 'show']);
-Route::get('/post/{id}', [PostController::class, 'show']);
+Route::get('/user/{name}/{age}/{salary}', [UserController::class, 'show']);
 
-Route::get('/user/{name}', [UserController::class, 'show']);
+Route::get('/user/{name}/{surname}', [UserController::class, 'test']);
 
-Route::get('/user/{name}/{surname?}', [UserController::class, 'show']);
+Route::get('/user/1/{name}/{surname}', [UserController::class, 'test1']);
+
+Route::get('/user/2/{name}/{surname}', [UserController::class, 'test2']);
 
 Route::get('/user/all', [UserController::class, 'all']);
 

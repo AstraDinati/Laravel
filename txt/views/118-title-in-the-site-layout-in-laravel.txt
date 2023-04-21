@@ -1,0 +1,36 @@
+Тайтл в макете сайта в Laravel
+Пусть теперь в представление передается не только контент, но и тайтл:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show()
+		{
+			return view('post.show', [
+				'title' => 'page title',
+				'text'  => 'page content',
+			]);
+		}
+	}
+?>
+Давайте выведем переданный тайтл в представлении:
+
+<x-layout>
+	<x-slot:title>
+		{{ $title }}
+	</x-slot>
+	
+	{{ $text }}
+</x-layout>
+В слоте для тайтла вместе с переменной можно вывести и какой-нибудь текст:
+
+<x-layout>
+	<x-slot:title>
+		{{ $title }} - site.com
+	</x-slot>
+	
+	{{ $text }}
+</x-layout>
+№1⊗pplrPmVwTV
+
+Модифицируйте контроллер с юзерами так, чтобы тайтл каждого представления передавался из контроллера.

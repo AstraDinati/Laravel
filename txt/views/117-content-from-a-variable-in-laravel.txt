@@ -1,0 +1,26 @@
+Контент из переменной в Laravel
+Пусть теперь текст контента не прописан жестко в представлении, а передается из контроллера:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show()
+		{
+			return view('post.show', [
+				'text' => 'page content',
+			]);
+		}
+	}
+?>
+Давайте выведем переданный текст в представлении:
+
+<x-layout>
+	<x-slot:title>
+		page title
+	</x-slot>
+	
+	{{ $text }}
+</x-layout>
+№1⊗pplrPmVwCV
+
+Модифицируйте контроллер с юзерами так, чтобы контент каждого представления передавался из контроллера.
