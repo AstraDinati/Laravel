@@ -1,0 +1,54 @@
+Перебор многомерных массивов в Blade в Laravel
+Пусть у нас дан вот такой массив с пользователями:
+
+<?php
+	$users = [
+		[
+			'name' => 'user1',
+			'age' => 21,
+		],
+		[
+			'name' => 'user2',
+			'age' => 22,
+		],
+		[
+			'name' => 'user3',
+			'age' => 23,
+		],
+	];
+?>
+Давайте выведем содержимое этого массива в виде списка ul:
+
+<ul>
+	@foreach ($users as $user)
+		<li>{{ $user['name'] }} {{ $user['age'] }}</li>
+	@endforeach
+</ul>
+№1⊗pplrPmBlFeMA
+
+Передайте из действия в представление массив с работниками:
+
+<?php
+	$employees = [
+		[
+			'name' => 'user1',
+			'surname' => 'surname1',
+			'salary' => 1000,
+		],
+		[
+			'name' => 'user2',
+			'surname' => 'surname2',
+			'salary' => 2000,
+		],
+		[
+			'name' => 'user3',
+			'surname' => 'surname3',
+			'salary' => 3000,
+		],
+	];
+?>
+Выведите этот массив в виде списка ul.
+
+№2⊗pplrPmBlFeMA
+
+Выведите массив из предыдущей задачи в виде HTML таблицы.

@@ -35,7 +35,7 @@ Route::get('/user/1/{name}/{surname}', [UserController::class, 'test1']);
 
 Route::get('/user/2/{name}/{surname}', [UserController::class, 'test2']);
 
-Route::get('/user/all', [UserController::class, 'all']);
+Route::get('/user/all', [UserController::class, 'all']); 
 
 // Route::get('/user/{surname}/{name}', function ($surname, $name) {
 //     return '/user/{surname}/{name} ' . $surname .' '. $name;
