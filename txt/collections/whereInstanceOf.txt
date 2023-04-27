@@ -1,0 +1,17 @@
+whereInstanceOf()
+Метод whereInstanceOf фильтрует коллекцию по указанному типу класса:
+
+use App\Models\User;
+use App\Models\Post;
+
+$collection = collect([
+    new User,
+    new User,
+    new Post,
+]);
+
+$filtered = $collection->whereInstanceOf(User::class);
+
+$filtered->all();
+
+// [App\Models\User, App\Models\User]

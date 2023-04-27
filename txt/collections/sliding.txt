@@ -1,0 +1,26 @@
+sliding()
+Метод sliding возвращает новую фрагментированную коллекцию, представляющих вид «скользящего окна» 
+элементов:
+
+$collection = collect([1, 2, 3, 4, 5]);
+
+$chunks = $collection->sliding(2);
+
+$chunks->toArray();
+
+// [[1, 2], [2, 3], [3, 4], [4, 5]]
+Это особенно полезно в сочетании с методом eachSpread:
+
+$transactions->sliding(2)->eachSpread(function ($previous, $current) {
+    $current->total = $previous->total + $current->amount;
+});
+При желании вы можете передать второе значение step, которое определяет расстояние между первым элементом 
+каждого фрагмента:
+
+$collection = collect([1, 2, 3, 4, 5]);
+
+$chunks = $collection->sliding(3, step: 2);
+
+$chunks->toArray();
+
+// [[1, 2, 3], [3, 4, 5]]

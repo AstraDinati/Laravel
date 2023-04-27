@@ -1,0 +1,23 @@
+get()
+Метод get возвращает элемент по указанному ключу. Если ключ не существует, возвращается null:
+
+$collection = collect(['name' => 'taylor', 'framework' => 'laravel']);
+
+$value = $collection->get('name');
+
+// taylor
+При желании вы можете передать значение по умолчанию в качестве второго аргумента:
+
+$collection = collect(['name' => 'taylor', 'framework' => 'laravel']);
+
+$value = $collection->get('age', 34);
+
+// 34
+Вы даже можете передать замыкание как значение метода по умолчанию. Результат замыкания будет возвращен, если указанный 
+ключ не существует:
+
+$collection->get('email', function () {
+    return 'taylor@example.com';
+});
+
+// taylor@example.com

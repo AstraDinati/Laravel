@@ -1,0 +1,17 @@
+partition()
+Метод partition может быть объединен с деструктуризацией массива PHP для разделения элементов, прошедших 
+указанную проверку истинности, от тех, которые ее не прошли:
+
+$collection = collect([1, 2, 3, 4, 5, 6]);
+
+[$underThree, $equalOrAboveThree] = $collection->partition(function ($i) {
+    return $i < 3;
+});
+
+$underThree->all();
+
+// [1, 2]
+
+$equalOrAboveThree->all();
+
+// [3, 4, 5, 6]

@@ -1,0 +1,27 @@
+firstWhere()
+Метод firstWhere возвращает первый элемент коллекции с переданной парой ключ / значение:
+
+$collection = collect([
+    ['name' => 'Regena', 'age' => null],
+    ['name' => 'Linda', 'age' => 14],
+    ['name' => 'Diego', 'age' => 23],
+    ['name' => 'Linda', 'age' => 84],
+]);
+
+$collection->firstWhere('name', 'Linda');
+
+// ['name' => 'Linda', 'age' => 14]
+Вы также можете вызвать метод firstWhere с оператором сравнения:
+
+$collection->firstWhere('age', '>=', 18);
+
+// ['name' => 'Diego', 'age' => 23]
+Подобно методу where, вы можете передать один аргумент методу firstWhere. В этом сценарии метод
+ firstWhere вернет первый элемент, для которого значение данного ключа элемента является 
+ «истинным»:
+
+$collection->firstWhere('age');
+
+// ['name' => 'Linda', 'age' => 14]
+
+* похоже на SQL 

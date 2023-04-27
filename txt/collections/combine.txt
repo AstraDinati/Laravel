@@ -1,0 +1,11 @@
+combine()
+Метод combine объединяет значения коллекции в качестве ключей со значениями другого массива 
+или коллекции:
+
+$collection = collect(['name', 'age']);
+
+$combined = $collection->combine(['George', 29]);
+
+$combined->all();
+
+// ['name' => 'George', 'age' => 29]

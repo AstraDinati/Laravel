@@ -1,0 +1,11 @@
+value()
+Метод value извлекает указанное значение первого элемента коллекции:
+
+$collection = collect([
+    ['product' => 'Desk', 'price' => 200],
+    ['product' => 'Speaker', 'price' => 400],
+]);
+
+$value = $collection->value('price');
+
+// 200

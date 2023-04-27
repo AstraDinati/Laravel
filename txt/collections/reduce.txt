@@ -1,0 +1,38 @@
+reduce()
+Метод reduce сокращает коллекцию до одного значения, передавая результат каждой итерации следующей 
+итерации:
+
+$collection = collect([1, 2, 3]);
+
+$total = $collection->reduce(function ($carry, $item) {
+    return $carry + $item;
+});
+
+// 6
+Значение $carry первой итерации равно null; однако вы можете указать его начальное значение, передав 
+второй аргумент методу reduce:
+
+$collection->reduce(function ($carry, $item) {
+    return $carry + $item;
+}, 4);
+
+// 10
+Метод reduce также передает ключи массива ассоциативных коллекций указанному замыканию:
+
+$collection = collect([
+    'usd' => 1400,
+    'gbp' => 1200,
+    'eur' => 1000,
+]);
+
+$ratio = [
+    'usd' => 1,
+    'gbp' => 1.37,
+    'eur' => 1.22,
+];
+
+$collection->reduce(function ($carry, $value, $key) use ($ratio) {
+    return $carry + ($value * $ratio[$key]);
+});
+
+// 4264

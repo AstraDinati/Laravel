@@ -1,0 +1,16 @@
+pull()
+Метод pull удаляет и возвращает элемент из коллекции по его ключу:
+
+$collection = collect(['product_id' => 'prod-100', 'name' => 'Desk']);
+
+$collection->pull('name');
+
+// 'Desk'
+
+$collection->all();
+
+// ['product_id' => 'prod-100']
+
+
+
+\\ Работает так же как get, но изменяет коллекцию 

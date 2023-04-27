@@ -1,0 +1,21 @@
+diffAssoc()
+Метод diffAssoc сравнивает коллекцию с другой коллекцией или простым массивом PHP на основе его 
+ключей и значений. Этот метод вернет пары ключ / значение из исходной коллекции, которых нет в 
+переданной коллекции:
+
+$collection = collect([
+    'color' => 'orange',
+    'type' => 'fruit',
+    'remain' => 6,
+]);
+
+$diff = $collection->diffAssoc([
+    'color' => 'yellow',
+    'type' => 'fruit',
+    'remain' => 3,
+    'used' => 6,
+]);
+
+$diff->all();
+
+// ['color' => 'orange', 'remain' => 6]

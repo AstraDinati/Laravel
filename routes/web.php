@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Cache;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CollectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +74,8 @@ Route::get('/{year}/{month}/{day}', function ($year, $month, $day) {
 //         return $id;
 //     });
 // });
+
+Route::get('/collections/', [CollectionController::class, 'show']);
 
 Route::prefix('admin')->group(function () {
     Route::get('/users', function () {

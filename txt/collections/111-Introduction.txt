@@ -1,0 +1,210 @@
+Введение
+Класс Illuminate\Support\Collection обеспечивает гибкую и удобную обертку для работы с массивами 
+данных. Например, посмотрите на следующий код. Здесь мы будем использовать помощник collect, чтобы 
+создать новый экземпляр коллекции из массива, запустим функцию strtoupper для каждого элемента, а 
+затем удалим все пустые элементы:
+
+$collection = collect(['taylor', 'abigail', null])->map(function ($name) {
+    return strtoupper($name);
+})->reject(function ($name) {
+    return empty($name);
+});
+Как видите, класс Collection позволяет объединять необходимые вам методы в цепочку для выполнения 
+последовательного перебора и сокращения базового массива. В-основном коллекции неизменяемы, то есть
+ каждый метод коллекции возвращает совершенно новый экземпляр Collection.
+
+
+Создание коллекций
+Как упоминалось выше, помощник collect возвращает новый экземпляр Illuminate\Support\Collection для
+ переданного массива. Итак, создать коллекцию очень просто:
+
+$collection = collect([1, 2, 3]);
+Примечание
+Результаты запросов Eloquent всегда возвращаются как экземпляры Collection.
+
+
+Расширение коллекций
+Класс Collection являются «макропрограммируемым», что позволяет вам добавлять дополнительные методы
+ к классу во время выполнения. Метод macro класса Illuminate\Support\Collection принимает замыкание,
+  которое будет выполнено при вызове вашей макрокоманды. Замыкание макрокоманды может обращаться к 
+  другим методам коллекции через $this, как если бы это был реальный метод класса коллекции. 
+  Например, следующий код добавляет метод toUpper классу Collection:
+
+use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
+
+Collection::macro('toUpper', function () {
+    return $this->map(function ($value) {
+        return Str::upper($value);
+    });
+});
+
+$collection = collect(['first', 'second']);
+
+$upper = $collection->toUpper();
+
+// ['FIRST', 'SECOND']
+Как правило, макрокоманды коллекций должны быть объявлены в методе boot поставщика служб.
+
+
+Аргументы макрокоманды
+При необходимости вы можете определить макрокоманды, которые принимают дополнительные аргументы:
+
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Lang;
+
+Collection::macro('toLocale', function ($locale) {
+    return $this->map(function ($value) use ($locale) {
+        return Lang::get($value, [], $locale);
+    });
+});
+
+$collection = collect(['first', 'second']);
+
+$translated = $collection->toLocale('es');
+
+Доступные методы
+В большей части оставшейся документации по коллекциям мы обсудим каждый метод, доступный в классе 
+Collection. Помните, что все эти методы можно объединить в цепочку для последовательного управления
+ базовым массивом. Более того, почти каждый метод возвращает новый экземпляр Collection, позволяя 
+ вам при необходимости сохранить исходную копию коллекции:
+
+all
+average
+avg
+chunk
+chunkWhile
+collapse
+collect
+combine
+concat
+contains
+containsOneItem
+containsStrict
+count
+countBy
+crossJoin
+dd
+diff
+diffAssoc
+diffKeys
+doesntContain
+dump
+duplicates
+duplicatesStrict
+each
+eachSpread
+every
+except
+filter
+first
+firstOrFail
+firstWhere
+flatMap
+flatten
+flip
+forget
+forPage
+get
+groupBy
+has
+hasAny
+implode
+intersect
+intersectByKeys
+isEmpty
+isNotEmpty
+join
+keyBy
+keys
+last
+lazy
+macro
+make
+map
+mapInto
+mapSpread
+mapToGroups
+mapWithKeys
+max
+median
+merge
+mergeRecursive
+min
+mode
+nth
+only
+pad
+partition
+pipe
+pipeInto
+pipeThrough
+pluck
+pop
+prepend
+pull
+push
+put
+random
+range
+reduce
+reduceSpread
+reject
+replace
+replaceRecursive
+reverse
+search
+shift
+shuffle
+skip
+skipUntil
+skipWhile
+slice
+sliding
+sole
+some
+sort
+sortBy
+sortByDesc
+sortDesc
+sortKeys
+sortKeysDesc
+sortKeysUsing
+splice
+split
+splitIn
+sum
+take
+takeUntil
+takeWhile
+tap
+times
+toArray
+toJson
+transform
+undot
+union
+unique
+uniqueStrict
+unless
+unlessEmpty
+unlessNotEmpty
+unwrap
+value
+values
+when
+whenEmpty
+whenNotEmpty
+where
+whereStrict
+whereBetween
+whereIn
+whereInStrict
+whereInstanceOf
+whereNotBetween
+whereNotIn
+whereNotInStrict
+whereNotNull
+whereNull
+wrap
+zip

@@ -1,0 +1,16 @@
+mergeRecursive()
+Метод mergeRecursive рекурсивно объединяет переданный массив или коллекцию с исходной коллекцией. Если 
+строковый ключ в переданных элементах совпадает со строковым ключом в исходной коллекции, тогда значения 
+этих ключей объединяются в массив, и это делается рекурсивно:
+
+$collection = collect(['product_id' => 1, 'price' => 100]);
+
+$merged = $collection->mergeRecursive([
+    'product_id' => 2,
+    'price' => 200,
+    'discount' => false
+]);
+
+$merged->all();
+
+// ['product_id' => [1, 2], 'price' => [100, 200], 'discount' => false]

@@ -1,0 +1,12 @@
+concat()
+Метод concat добавляет значения переданного массива или коллекции в конец другой коллекции:
+
+$collection = collect(['John Doe']);
+
+$concatenated = $collection->concat(['Jane Doe'])->concat(['name' => 'Johnny Doe']);
+
+$concatenated->all();
+
+// ['John Doe', 'Jane Doe', 'Johnny Doe']
+Метод concat численно переиндексирует ключи элементов, добавленных в исходную коллекцию. Чтобы 
+сохранить ключи в ассоциативных коллекциях, см. метод merge.

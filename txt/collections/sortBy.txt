@@ -1,0 +1,114 @@
+sortBy()
+Метод sortBy сортирует коллекцию по указанному ключу. В отсортированной коллекции хранятся исходные ключи 
+массива, поэтому в следующем примере мы будем использовать метод values для сброса ключей для 
+последовательной нумерации индексов:
+
+$collection = collect([
+    ['name' => 'Desk', 'price' => 200],
+    ['name' => 'Chair', 'price' => 100],
+    ['name' => 'Bookcase', 'price' => 150],
+]);
+
+$sorted = $collection->sortBy('price');
+
+$sorted->values()->all();
+
+/*
+    [
+        ['name' => 'Chair', 'price' => 100],
+        ['name' => 'Bookcase', 'price' => 150],
+        ['name' => 'Desk', 'price' => 200],
+    ]
+*/
+Метод sortBy принимает флаги типа сортировки в качестве второго аргумента:
+
+$collection = collect([
+    ['title' => 'Item 1'],
+    ['title' => 'Item 12'],
+    ['title' => 'Item 3'],
+]);
+
+$sorted = $collection->sortBy('title', SORT_NATURAL);
+
+$sorted->values()->all();
+
+/*
+    [
+        ['title' => 'Item 1'],
+        ['title' => 'Item 3'],
+        ['title' => 'Item 12'],
+    ]
+*/
+В качестве альтернативы вы можете передать собственное замыкание, чтобы определить, как сортировать 
+значения коллекции:
+
+$collection = collect([
+    ['name' => 'Desk', 'colors' => ['Black', 'Mahogany']],
+    ['name' => 'Chair', 'colors' => ['Black']],
+    ['name' => 'Bookcase', 'colors' => ['Red', 'Beige', 'Brown']],
+]);
+
+$sorted = $collection->sortBy(function ($product, $key) {
+    return count($product['colors']);
+});
+
+$sorted->values()->all();
+
+/*
+    [
+        ['name' => 'Chair', 'colors' => ['Black']],
+        ['name' => 'Desk', 'colors' => ['Black', 'Mahogany']],
+        ['name' => 'Bookcase', 'colors' => ['Red', 'Beige', 'Brown']],
+    ]
+*/
+Если вы хотите отсортировать свою коллекцию по нескольким атрибутам, вы можете передать массив операций 
+сортировки методу sortBy. Каждая операция сортировки должна быть массивом, состоящим из атрибута, по 
+которому вы хотите сортировать, и направления желаемой сортировки:
+
+$collection = collect([
+    ['name' => 'Taylor Otwell', 'age' => 34],
+    ['name' => 'Abigail Otwell', 'age' => 30],
+    ['name' => 'Taylor Otwell', 'age' => 36],
+    ['name' => 'Abigail Otwell', 'age' => 32],
+]);
+
+$sorted = $collection->sortBy([
+    ['name', 'asc'],
+    ['age', 'desc'],
+]);
+
+$sorted->values()->all();
+
+/*
+    [
+        ['name' => 'Abigail Otwell', 'age' => 32],
+        ['name' => 'Abigail Otwell', 'age' => 30],
+        ['name' => 'Taylor Otwell', 'age' => 36],
+        ['name' => 'Taylor Otwell', 'age' => 34],
+    ]
+*/
+При сортировке коллекции по нескольким атрибутам вы также можете указать замыкания, определяющие каждую 
+операцию сортировки:
+
+$collection = collect([
+    ['name' => 'Taylor Otwell', 'age' => 34],
+    ['name' => 'Abigail Otwell', 'age' => 30],
+    ['name' => 'Taylor Otwell', 'age' => 36],
+    ['name' => 'Abigail Otwell', 'age' => 32],
+]);
+
+$sorted = $collection->sortBy([
+    fn ($a, $b) => $a['name'] <=> $b['name'],
+    fn ($a, $b) => $b['age'] <=> $a['age'],
+]);
+
+$sorted->values()->all();
+
+/*
+    [
+        ['name' => 'Abigail Otwell', 'age' => 32],
+        ['name' => 'Abigail Otwell', 'age' => 30],
+        ['name' => 'Taylor Otwell', 'age' => 36],
+        ['name' => 'Taylor Otwell', 'age' => 34],
+    ]
+*/

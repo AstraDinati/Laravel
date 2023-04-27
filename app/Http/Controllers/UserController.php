@@ -120,7 +120,7 @@ class UserController extends Controller
                 'banned' => false,
             ],
         ],
-        'arr10' => ['Vadim', 'Lebedev', 26, 2000], 'arrMonth' => $arrMonth, 'today' => 22
+        'arr10' => ['Vadim', 'Lebedev', 26, 2000], 'arrMonth' => $arrMonth, 'today' => date('j')
         ]);
     }
 } 

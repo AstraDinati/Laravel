@@ -1,0 +1,14 @@
+containsOneItem()
+Метод containsOneItem определяет, содержит ли коллекция единственный элемент:
+
+collect([])->containsOneItem();
+
+// false
+
+collect(['1'])->containsOneItem();
+
+// true
+
+collect(['1', '2'])->containsOneItem();
+
+// false

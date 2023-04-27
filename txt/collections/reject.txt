@@ -1,0 +1,14 @@
+reject()
+Метод reject фильтрует коллекцию, используя переданное замыкание. Замыкание должно возвращать true, если
+ элемент должен быть удален из результирующей коллекции:
+
+$collection = collect([1, 2, 3, 4]);
+
+$filtered = $collection->reject(function ($value, $key) {
+    return $value > 2;
+});
+
+$filtered->all();
+
+// [1, 2]
+Противоположным методу reject является метод filter.

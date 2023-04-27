@@ -1,0 +1,19 @@
+only()
+Метод only возвращает элементы коллекции только с указанными ключами:
+
+$collection = collect([
+    'product_id' => 1,
+    'name' => 'Desk',
+    'price' => 100,
+    'discount' => false
+]);
+
+$filtered = $collection->only(['product_id', 'name']);
+
+$filtered->all();
+
+// ['product_id' => 1, 'name' => 'Desk']
+Противоположным методу only является метод except.
+
+Примечание
+Поведение этого метода изменяется при использовании коллекций Eloquent.

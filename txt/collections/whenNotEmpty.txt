@@ -1,0 +1,37 @@
+whenNotEmpty()
+Метод whenNotEmpty выполнит указанное замыкание, если коллекция не пуста:
+
+$collection = collect(['michael', 'tom']);
+
+$collection->whenNotEmpty(function ($collection) {
+    return $collection->push('adam');
+});
+
+$collection->all();
+
+// ['michael', 'tom', 'adam']
+
+
+$collection = collect();
+
+$collection->whenNotEmpty(function ($collection) {
+    return $collection->push('adam');
+});
+
+$collection->all();
+
+// []
+Второе замыкание, переданное методу whenNotEmpty, будет выполнено, если коллекция пуста:
+
+$collection = collect();
+
+$collection->whenNotEmpty(function ($collection) {
+    return $collection->push('adam');
+}, function ($collection) {
+    return $collection->push('taylor');
+});
+
+$collection->all();
+
+// ['taylor']
+Противоположным методу whenNotEmpty является метод whenEmpty.

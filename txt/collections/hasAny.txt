@@ -1,0 +1,12 @@
+hasAny()
+Метод hasAny определяет, существует ли какой-либо из переданных ключей в коллекции:
+
+$collection = collect(['account_id' => 1, 'product' => 'Desk', 'amount' => 5]);
+
+$collection->hasAny(['product', 'price']);
+
+// true
+
+$collection->hasAny(['name', 'price']);
+
+// false

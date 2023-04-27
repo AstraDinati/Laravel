@@ -1,0 +1,21 @@
+merge()
+Метод merge объединяет переданный массив или коллекцию с исходной коллекцией. Если строковый ключ в 
+переданных элементах соответствует строковому ключу в исходной коллекции, то значение переданного элемента 
+перезапишет значение в исходной коллекции:
+
+$collection = collect(['product_id' => 1, 'price' => 100]);
+
+$merged = $collection->merge(['price' => 200, 'discount' => false]);
+
+$merged->all();
+
+// ['product_id' => 1, 'price' => 200, 'discount' => false]
+Если ключи переданных элементов являются числовыми, то значения будут добавлены в конец коллекции:
+
+$collection = collect(['Desk', 'Chair']);
+
+$merged = $collection->merge(['Bookcase', 'Door']);
+
+$merged->all();
+
+// ['Desk', 'Chair', 'Bookcase', 'Door']

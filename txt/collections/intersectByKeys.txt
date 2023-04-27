@@ -1,0 +1,15 @@
+intersectByKeys()
+Метод intersectByKeys удаляет все ключи и соответствующие им значения из исходной коллекции, ключи которых отсутствуют в 
+указанном массиве или коллекции:
+
+$collection = collect([
+    'serial' => 'UX301', 'type' => 'screen', 'year' => 2009,
+]);
+
+$intersect = $collection->intersectByKeys([
+    'reference' => 'UX404', 'type' => 'tab', 'year' => 2011,
+]);
+
+$intersect->all();
+
+// ['type' => 'screen', 'year' => 2009]

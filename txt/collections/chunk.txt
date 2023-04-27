@@ -1,0 +1,20 @@
+chunk()
+Метод chunk разбивает коллекцию на несколько меньших коллекций указанного размера:
+
+$collection = collect([1, 2, 3, 4, 5, 6, 7]);
+
+$chunks = $collection->chunk(4);
+
+$chunks->all();
+
+// [[1, 2, 3, 4], [5, 6, 7]]
+
+Этот метод особенно полезен в шаблонах при работе с сеткой, такой как Bootstrap. Например, представьте, что у вас есть коллекция моделей Eloquent, которые вы хотите отобразить в сетке:
+
+@foreach ($products->chunk(3) as $chunk)
+    <div class="row">
+        @foreach ($chunk as $product)
+            <div class="col-xs-4">{{ $product->name }}</div>
+        @endforeach
+    </div>
+@endforeach

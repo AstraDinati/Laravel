@@ -1,0 +1,14 @@
+takeWhile()
+Метод takeWhile возвращает элементы коллекции до тех пор, пока указанное замыкание не вернет false:
+
+$collection = collect([1, 2, 3, 4]);
+
+$subset = $collection->takeWhile(function ($item) {
+    return $item < 3;
+});
+
+$subset->all();
+
+// [1, 2]
+Предупреждение
+Если замыкание никогда не возвращает false, метод takeWhile вернет все элементы коллекции.

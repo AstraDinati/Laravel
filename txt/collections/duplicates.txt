@@ -1,0 +1,23 @@
+duplicates()
+Метод duplicates извлекает и возвращает повторяющиеся значения из коллекции:
+
+$collection = collect(['a', 'b', 'a', 'c', 'b']);
+
+$collection->duplicates();
+
+// [2 => 'a', 4 => 'b']
+Если коллекция содержит массивы или объекты, вы можете передать ключ атрибутов, которые вы 
+хотите проверить на наличие повторяющихся значений:
+
+$employees = collect([
+    ['email' => 'abigail@example.com', 'position' => 'Developer'],
+    ['email' => 'james@example.com', 'position' => 'Designer'],
+    ['email' => 'victoria@example.com', 'position' => 'Developer'],
+]);
+
+$employees->duplicates('position');
+
+// [2 => 'Developer']
+
+* возвращает ассоциативный массив, ключами в котором будут ключи повторяющихся элементов в 
+изначальной коллекции

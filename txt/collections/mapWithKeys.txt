@@ -1,0 +1,29 @@
+mapWithKeys()
+Метод mapWithKeys выполняет итерацию по коллекции и передает каждое значение в указанное замыкание. 
+Замыкание должно возвращать ассоциативный массив, содержащий одну пару ключ / значение:
+
+$collection = collect([
+    [
+        'name' => 'John',
+        'department' => 'Sales',
+        'email' => 'john@example.com',
+    ],
+    [
+        'name' => 'Jane',
+        'department' => 'Marketing',
+        'email' => 'jane@example.com',
+    ]
+]);
+
+$keyed = $collection->mapWithKeys(function ($item, $key) {
+    return [$item['email'] => $item['name']];
+});
+
+$keyed->all();
+
+/*
+    [
+        'john@example.com' => 'John',
+        'jane@example.com' => 'Jane',
+    ]
+*/

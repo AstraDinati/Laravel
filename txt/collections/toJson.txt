@@ -1,0 +1,8 @@
+toJson()
+Метод toJson преобразует коллекцию в сериализованную строку JSON:
+
+$collection = collect(['name' => 'Desk', 'price' => 200]);
+
+$collection->toJson();
+
+// '{"name":"Desk", "price":200}'

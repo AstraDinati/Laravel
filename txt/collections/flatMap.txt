@@ -1,0 +1,18 @@
+flatMap()
+Метод flatMap выполняет итерацию по коллекции и передает каждое значение переданному замыканию. 
+Замыкание может изменить элемент и вернуть его, таким образом формируя новую коллекцию измененных 
+элементов. Затем массив преобразуется в плоскую структуру:
+
+$collection = collect([
+    ['name' => 'Sally'],
+    ['school' => 'Arkansas'],
+    ['age' => 28]
+]);
+
+$flattened = $collection->flatMap(function ($values) {
+    return array_map('strtoupper', $values);
+});
+
+$flattened->all();
+
+// ['name' => 'SALLY', 'school' => 'ARKANSAS', 'age' => '28'];

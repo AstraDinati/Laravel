@@ -203,7 +203,7 @@
         </select>
         <ul>
             @foreach($arrMonth as $day)
-            @if (($loop->iteration) === $today)
+            @if (($loop->iteration) == $today)
             <li>{{ $day }} today</li>
             @else
             <li>{{ $day }}</li>

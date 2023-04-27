@@ -1,0 +1,10 @@
+times()
+Статический метод times создает новую коллекцию, вызывая переданное замыкание указанное количество раз:
+
+$collection = Collection::times(10, function ($number) {
+    return $number * 9;
+});
+
+$collection->all();
+
+// [9, 18, 27, 36, 45, 54, 63, 72, 81, 90]

@@ -1,0 +1,19 @@
+prepend()
+Метод prepend добавляет элемент в начало коллекции:
+
+$collection = collect([1, 2, 3, 4, 5]);
+
+$collection->prepend(0);
+
+$collection->all();
+
+// [0, 1, 2, 3, 4, 5]
+Вы также можете передать второй аргумент, чтобы указать ключ добавляемого элемента:
+
+$collection = collect(['one' => 1, 'two' => 2]);
+
+$collection->prepend(0, 'zero');
+
+$collection->all();
+
+// ['zero' => 0, 'one' => 1, 'two' => 2]

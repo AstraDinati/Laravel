@@ -1,0 +1,21 @@
+filter()
+Метод filter фильтрует коллекцию, используя переданное замыкание, сохраняя только те элементы, 
+которые проходят указанный тест истинности:
+
+$collection = collect([1, 2, 3, 4]);
+
+$filtered = $collection->filter(function ($value, $key) {
+    return $value > 2;
+});
+
+$filtered->all();
+
+// [3, 4]
+Если замыкание не указано, то все записи коллекции, эквивалентные false, будут удалены:
+
+$collection = collect([1, 2, 3, null, false, '', 0, []]);
+
+$collection->filter()->all();
+
+// [1, 2, 3]
+Противоположным методу filter является метод reject.

@@ -1,0 +1,20 @@
+sortKeys()
+Метод sortKeys сортирует коллекцию по ключам базового ассоциативного массива:
+
+$collection = collect([
+    'id' => 22345,
+    'first' => 'John',
+    'last' => 'Doe',
+]);
+
+$sorted = $collection->sortKeys();
+
+$sorted->all();
+
+/*
+    [
+        'first' => 'John',
+        'id' => 22345,
+        'last' => 'Doe',
+    ]
+*/

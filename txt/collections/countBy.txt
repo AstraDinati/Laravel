@@ -1,0 +1,23 @@
+countBy()
+Метод countBy подсчитывает вхождения значений в коллекцию. По умолчанию метод подсчитывает 
+вхождения каждого элемента, что позволяет подсчитать определенные «типы» элементов в коллекции:
+
+$collection = collect([1, 2, 2, 2, 3]);
+
+$counted = $collection->countBy();
+
+$counted->all();
+
+// [1 => 1, 2 => 3, 3 => 1]
+Вы можете передать замыкание методу countBy для подсчета всех элементов по собственным 
+критериям:
+
+$collection = collect(['alice@gmail.com', 'bob@yahoo.com', 'carlos@gmail.com']);
+
+$counted = $collection->countBy(function ($email) {
+    return substr(strrchr($email, "@"), 1);
+});
+
+$counted->all();
+
+// ['gmail.com' => 2, 'yahoo.com' => 1]

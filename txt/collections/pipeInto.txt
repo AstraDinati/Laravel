@@ -1,0 +1,29 @@
+pipeInto()
+Метод pipeInto создает новый экземпляр указанного класса и передает коллекцию в конструктор:
+
+class ResourceCollection
+{
+    /**
+     * Экземпляр Collection.
+     */
+    public $collection;
+
+    /**
+     * Создать новый экземпляр ResourceCollection.
+     *
+     * @param  Collection  $collection
+     * @return void
+     */
+    public function __construct(Collection $collection)
+    {
+        $this->collection = $collection;
+    }
+}
+
+$collection = collect([1, 2, 3]);
+
+$resource = $collection->pipeInto(ResourceCollection::class);
+
+$resource->collection->all();
+
+// [1, 2, 3]

@@ -1,0 +1,33 @@
+collect()
+Метод collect возвращает новый экземпляр Collection с элементами, находящимися в текущей 
+коллекции:
+
+$collectionA = collect([1, 2, 3]);
+
+$collectionB = $collectionA->collect();
+
+$collectionB->all();
+
+// [1, 2, 3]
+Метод collect в первую очередь полезен для преобразования отложенных коллекций в стандартные
+ экземпляры Collection:
+
+$lazyCollection = LazyCollection::make(function () {
+    yield 1;
+    yield 2;
+    yield 3;
+});
+
+$collection = $lazyCollection->collect();
+
+get_class($collection);
+
+// 'Illuminate\Support\Collection'
+
+$collection->all();
+
+// [1, 2, 3]
+Примечание
+Метод collect особенно полезен, когда у вас есть экземпляр Enumerable и вам нужен 
+«не-отложенный» экземпляр коллекции. Так как collect() является частью контракта Enumerable,
+ вы можете безопасно использовать его для получения экземпляра Collection.

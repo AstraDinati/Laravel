@@ -1,0 +1,31 @@
+sum()
+Метод sum возвращает сумму всех элементов в коллекции:
+
+collect([1, 2, 3, 4, 5])->sum();
+
+// 15
+Если коллекция содержит вложенные массивы или объекты, вы должны передать ключ, который будет 
+использоваться для определения суммирования значений:
+
+$collection = collect([
+    ['name' => 'JavaScript: The Good Parts', 'pages' => 176],
+    ['name' => 'JavaScript: The Definitive Guide', 'pages' => 1096],
+]);
+
+$collection->sum('pages');
+
+// 1272
+Кроме того, вы можете передать собственное замыкание, чтобы определить, какие значения коллекции 
+суммировать:
+
+$collection = collect([
+    ['name' => 'Chair', 'colors' => ['Black']],
+    ['name' => 'Desk', 'colors' => ['Black', 'Mahogany']],
+    ['name' => 'Bookcase', 'colors' => ['Red', 'Beige', 'Brown']],
+]);
+
+$collection->sum(function ($product) {
+    return count($product['colors']);
+});
+
+// 6

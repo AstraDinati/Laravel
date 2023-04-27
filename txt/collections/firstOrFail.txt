@@ -1,0 +1,16 @@
+firstOrFail()
+Метод firstOrFail идентичен методу first; однако, если результат не найден, то будет выброшено 
+исключение Illuminate\Support\ItemNotFoundException:
+
+collect([1, 2, 3, 4])->firstOrFail(function ($value, $key) {
+    return $value > 5;
+});
+
+// Выброшено исключение ItemNotFoundException ...
+Вы также можете вызвать метод firstOrFail без аргументов, чтобы получить первый элемент 
+коллекции. Если коллекция пуста, то будет выброшено исключение 
+Illuminate\Support\ItemNotFoundException:
+
+collect([])->firstOrFail();
+
+// Выброшено исключение ItemNotFoundException ...

@@ -1,0 +1,25 @@
+mapInto()
+Метод mapInto() выполняет итерацию коллекции, создавая новый экземпляр указанного класса, и передавая 
+значение в его конструктор:
+
+class Currency
+{
+    /**
+     * Создать новый экземпляр валюты.
+     *
+     * @param  string  $code
+     * @return void
+     */
+    function __construct(string $code)
+    {
+        $this->code = $code;
+    }
+}
+
+$collection = collect(['USD', 'EUR', 'GBP']);
+
+$currencies = $collection->mapInto(Currency::class);
+
+$currencies->all();
+
+// [Currency('USD'), Currency('EUR'), Currency('GBP')]

@@ -1,0 +1,57 @@
+pluck()
+Метод pluck извлекает все значения для указанного ключа:
+
+$collection = collect([
+    ['product_id' => 'prod-100', 'name' => 'Desk'],
+    ['product_id' => 'prod-200', 'name' => 'Chair'],
+]);
+
+$plucked = $collection->pluck('name');
+
+$plucked->all();
+
+// ['Desk', 'Chair']
+Вы также можете задать ключ результирующей коллекции:
+
+$plucked = $collection->pluck('name', 'product_id');
+
+$plucked->all();
+
+// ['prod-100' => 'Desk', 'prod-200' => 'Chair']
+Метод pluck также поддерживает получение вложенных значений с использованием «точечной нотации»:
+
+$collection = collect([
+    [
+        'name' => 'Laracon',
+        'speakers' => [
+            'first_day' => ['Rosa', 'Judith'],
+        ],
+    ],
+    [
+        'name' => 'VueConf',
+        'speakers' => [
+            'first_day' => ['Abigail', 'Joey'],
+        ],
+    ],
+]);
+
+$plucked = $collection->pluck('speakers.first_day');
+
+$plucked->all();
+
+// [['Rosa', 'Judith'], ['Abigail', 'Joey']]
+Если существуют повторяющиеся ключи, последний соответствующий элемент будет вставлен в результирующую 
+коллекцию:
+
+$collection = collect([
+    ['brand' => 'Tesla',  'color' => 'red'],
+    ['brand' => 'Pagani', 'color' => 'white'],
+    ['brand' => 'Tesla',  'color' => 'black'],
+    ['brand' => 'Pagani', 'color' => 'orange'],
+]);
+
+$plucked = $collection->pluck('color', 'brand');
+
+$plucked->all();
+
+// ['Tesla' => 'black', 'Pagani' => 'orange']

@@ -1,0 +1,13 @@
+intersect()
+Метод intersect удаляет любые значения из исходной коллекции, которых нет в указанном массиве или коллекции. Полученная 
+коллекция сохранит ключи исходной коллекции:
+
+$collection = collect(['Desk', 'Sofa', 'Chair']);
+
+$intersect = $collection->intersect(['Desk', 'Chair', 'Bookcase']);
+
+$intersect->all();
+
+// [0 => 'Desk', 2 => 'Chair']
+Примечание
+Поведение этого метода изменяется при использовании коллекций Eloquent.

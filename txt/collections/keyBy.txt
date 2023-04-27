@@ -1,0 +1,32 @@
+keyBy()
+Метод keyBy возвращает коллекцию, элементы которой будут образованы путем присвоения ключей элементам базовой коллекции. Если у нескольких элементов один и тот же ключ, в новой коллекции появится только последний:
+
+$collection = collect([
+    ['product_id' => 'prod-100', 'name' => 'Desk'],
+    ['product_id' => 'prod-200', 'name' => 'Chair'],
+]);
+
+$keyed = $collection->keyBy('product_id');
+
+$keyed->all();
+
+/*
+    [
+        'prod-100' => ['product_id' => 'prod-100', 'name' => 'Desk'],
+        'prod-200' => ['product_id' => 'prod-200', 'name' => 'Chair'],
+    ]
+*/
+Вы также можете передать методу замыкание. Замыкание должно возвращать значение для ключа коллекции:
+
+$keyed = $collection->keyBy(function ($item, $key) {
+    return strtoupper($item['product_id']);
+});
+
+$keyed->all();
+
+/*
+    [
+        'PROD-100' => ['product_id' => 'prod-100', 'name' => 'Desk'],
+        'PROD-200' => ['product_id' => 'prod-200', 'name' => 'Chair'],
+    ]
+*/

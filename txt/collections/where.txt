@@ -1,0 +1,43 @@
+where()
+Метод where фильтрует коллекцию по указанной паре ключ / значение:
+
+$collection = collect([
+    ['product' => 'Desk', 'price' => 200],
+    ['product' => 'Chair', 'price' => 100],
+    ['product' => 'Bookcase', 'price' => 150],
+    ['product' => 'Door', 'price' => 100],
+]);
+
+$filtered = $collection->where('price', 100);
+
+$filtered->all();
+
+/*
+    [
+        ['product' => 'Chair', 'price' => 100],
+        ['product' => 'Door', 'price' => 100],
+    ]
+*/
+Метод where использует «гибкое» сравнение при проверке значений элементов, что означает, что строка с 
+целым значением будет считаться равной целому числу того же значения. Используйте метод whereStrict для 
+фильтрации с использованием «жесткого» сравнения.
+
+При желании вы можете передать оператор сравнения в качестве второго параметра. Поддерживаются следующие 
+операторы: ===, !==, !=, ==, =, <>, >, <, >= и <=:
+
+$collection = collect([
+    ['name' => 'Jim', 'deleted_at' => '2019-01-01 00:00:00'],
+    ['name' => 'Sally', 'deleted_at' => '2019-01-02 00:00:00'],
+    ['name' => 'Sue', 'deleted_at' => null],
+]);
+
+$filtered = $collection->where('deleted_at', '!=', null);
+
+$filtered->all();
+
+/*
+    [
+        ['name' => 'Jim', 'deleted_at' => '2019-01-01 00:00:00'],
+        ['name' => 'Sally', 'deleted_at' => '2019-01-02 00:00:00'],
+    ]
+*/

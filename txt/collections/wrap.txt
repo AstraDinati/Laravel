@@ -1,0 +1,22 @@
+wrap()
+Статический метод wrap оборачивает указанное значение в коллекцию, если это применимо:
+
+use Illuminate\Support\Collection;
+
+$collection = Collection::wrap('John Doe');
+
+$collection->all();
+
+// ['John Doe']
+
+$collection = Collection::wrap(['John Doe']);
+
+$collection->all();
+
+// ['John Doe']
+
+$collection = Collection::wrap(collect('John Doe'));
+
+$collection->all();
+
+// ['John Doe']

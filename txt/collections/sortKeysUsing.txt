@@ -1,0 +1,20 @@
+sortKeysUsing()
+Метод sortKeysUsing сортирует коллекцию по ключам ассоциативного массива с помощью замыканиня:
+
+$collection = collect([
+    'ID' => 22345,
+    'first' => 'John',
+    'last' => 'Doe',
+]);
+
+$sorted = $collection->sortKeysUsing('strnatcasecmp');
+
+$sorted->all();
+
+/*
+    [
+        'first' => 'John',
+        'ID' => 22345,
+        'last' => 'Doe',
+    ]
+*/

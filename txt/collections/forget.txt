@@ -1,0 +1,12 @@
+forget()
+Метод forget удаляет элемент из коллекции по его ключу:
+
+$collection = collect(['name' => 'taylor', 'framework' => 'laravel']);
+
+$collection->forget('name');
+
+$collection->all();
+
+// ['framework' => 'laravel']
+Предупреждение
+В отличие от большинства других методов коллекции, forget модифицирует коллекцию.

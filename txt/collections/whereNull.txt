@@ -1,0 +1,18 @@
+whereNull()
+Метод whereNull возвращает элементы из коллекции, для которых значение указанного ключа равно null:
+
+$collection = collect([
+    ['name' => 'Desk'],
+    ['name' => null],
+    ['name' => 'Bookcase'],
+]);
+
+$filtered = $collection->whereNull('name');
+
+$filtered->all();
+
+/*
+    [
+        ['name' => null],
+    ]
+*/

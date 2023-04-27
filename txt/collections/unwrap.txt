@@ -1,0 +1,14 @@
+unwrap()
+Статический метод unwrap возвращает базовые элементы коллекции из указанного значения, когда это применимо:
+
+Collection::unwrap(collect('John Doe'));
+
+// ['John Doe']
+
+Collection::unwrap(['John Doe']);
+
+// ['John Doe']
+
+Collection::unwrap('John Doe');
+
+// 'John Doe'

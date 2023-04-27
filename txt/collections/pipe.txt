@@ -1,0 +1,10 @@
+pipe()
+Метод pipe передает коллекцию указанному замыканию и возвращает результат выполненного замыкания:
+
+$collection = collect([1, 2, 3]);
+
+$piped = $collection->pipe(function ($collection) {
+    return $collection->sum();
+});
+
+// 6

@@ -1,0 +1,10 @@
+push()
+Метод push добавляет элемент в конец коллекции:
+
+$collection = collect([1, 2, 3, 4]);
+
+$collection->push(5);
+
+$collection->all();
+
+// [1, 2, 3, 4, 5]

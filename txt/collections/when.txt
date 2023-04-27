@@ -1,0 +1,32 @@
+when()
+Метод when выполнит указанное замыкание, если первый аргумент, переданный методу, оценивается как true. 
+Экземпляр коллекции и первый аргумент, переданный методу when, будут переданы замыканию:
+
+$collection = collect([1, 2, 3]);
+
+$collection->when(true, function ($collection, $value) {
+    return $collection->push(4);
+});
+
+$collection->when(false, function ($collection, $value) {
+    return $collection->push(5);
+});
+
+$collection->all();
+
+// [1, 2, 3, 4]
+Второе замыкание, переданное методу when, будет выполнено, если первый аргумент, переданный методу, 
+оценивается как false:
+
+$collection = collect([1, 2, 3]);
+
+$collection->when(false, function ($collection, $value) {
+    return $collection->push(4);
+}, function ($collection) {
+    return $collection->push(5);
+});
+
+$collection->all();
+
+// [1, 2, 3, 5]
+Противоположным методу when является метод unless.

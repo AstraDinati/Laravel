@@ -1,0 +1,14 @@
+eachSpread()
+Метод eachSpread выполняет итерацию по элементам коллекции, передавая значение каждого 
+вложенного элемента в замыкание:
+
+$collection = collect([['John Doe', 35], ['Jane Doe', 33]]);
+
+$collection->eachSpread(function ($name, $age) {
+    //
+});
+Если вы хотите прекратить итерацию по элементам, вы можете вернуть false из вашего замыкания:
+
+$collection->eachSpread(function ($name, $age) {
+    return false;
+});

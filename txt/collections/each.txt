@@ -1,0 +1,13 @@
+each()
+Метод each перебирает элементы в коллекции и передает каждый элемент в замыкание:
+
+$collection->each(function ($item, $key) {
+    //
+});
+Если вы хотите прекратить итерацию по элементам, вы можете вернуть false из вашего замыкания:
+
+$collection->each(function ($item, $key) {
+    if (/* condition */) {
+        return false;
+    }
+});

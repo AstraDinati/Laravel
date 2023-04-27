@@ -1,0 +1,18 @@
+values()
+Метод values возвращает новую коллекцию с ключами, сброшенными на последовательные целые числа:
+
+$collection = collect([
+    10 => ['product' => 'Desk', 'price' => 200],
+    11 => ['product' => 'Desk', 'price' => 200],
+]);
+
+$values = $collection->values();
+
+$values->all();
+
+/*
+    [
+        0 => ['product' => 'Desk', 'price' => 200],
+        1 => ['product' => 'Desk', 'price' => 200],
+    ]
+*/

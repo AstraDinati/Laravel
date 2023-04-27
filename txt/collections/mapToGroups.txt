@@ -1,0 +1,36 @@
+mapToGroups()
+Метод mapToGroups группирует элементы коллекции по указанному замыканию. Замыкание должно возвращать 
+ассоциативный массив, содержащий одну пару ключ / значение, таким образом формируя новую коллекцию 
+сгруппированных значений:
+
+$collection = collect([
+    [
+        'name' => 'John Doe',
+        'department' => 'Sales',
+    ],
+    [
+        'name' => 'Jane Doe',
+        'department' => 'Sales',
+    ],
+    [
+        'name' => 'Johnny Doe',
+        'department' => 'Marketing',
+    ]
+]);
+
+$grouped = $collection->mapToGroups(function ($item, $key) {
+    return [$item['department'] => $item['name']];
+});
+
+$grouped->all();
+
+/*
+    [
+        'Sales' => ['John Doe', 'Jane Doe'],
+        'Marketing' => ['Johnny Doe'],
+    ]
+*/
+
+$grouped->get('Sales')->all();
+
+// ['John Doe', 'Jane Doe']

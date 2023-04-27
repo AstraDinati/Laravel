@@ -1,0 +1,12 @@
+replace()
+Метод replace ведет себя аналогично методу merge; однако, помимо перезаписи совпадающих элементов, 
+имеющих строковые ключи, метод replace также перезаписывает элементы в коллекции, у которых есть 
+совпадающие числовые ключи:
+
+$collection = collect(['Taylor', 'Abigail', 'James']);
+
+$replaced = $collection->replace([1 => 'Victoria', 3 => 'Finn']);
+
+$replaced->all();
+
+// ['Taylor', 'Victoria', 'James', 'Finn']

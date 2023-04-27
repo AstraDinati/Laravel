@@ -1,0 +1,6 @@
+isNotEmpty()
+Метод isNotEmpty возвращает true, если коллекция не пуста; в противном случае возвращается false:
+
+collect([])->isNotEmpty();
+
+// false

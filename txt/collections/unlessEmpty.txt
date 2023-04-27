@@ -1,0 +1,2 @@
+unlessEmpty()
+Псевдоним для метода whenNotEmpty.

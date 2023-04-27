@@ -1,0 +1,39 @@
+doesntContain()
+Метод doesntContain определяет отсутствие переданного элемента в коллекции. Вы также можете 
+передать замыкание методу doesntContain, чтобы определить отсутствие элемента с указанным 
+критерием истинности в коллекции:
+
+$collection = collect([1, 2, 3, 4, 5]);
+
+$collection->doesntContain(function ($value, $key) {
+    return $value < 5;
+});
+
+// false
+Как вариант, вы можете передать строку методу doesntContain, чтобы определить отсутствие 
+элемента с указанным значением в коллекции:
+
+$collection = collect(['name' => 'Desk', 'price' => 100]);
+
+$collection->doesntContain('Table');
+
+// true
+
+$collection->doesntContain('Desk');
+
+// false
+Вы также можете передать пару ключ / значение методу doesntContain, который определит отсутствие
+ переданной пары в коллекции:
+
+$collection = collect([
+    ['product' => 'Desk', 'price' => 200],
+    ['product' => 'Chair', 'price' => 100],
+]);
+
+$collection->doesntContain('product', 'Bookcase');
+
+// true
+Метод doesntContain использует «гибкое» сравнение при проверке значений элементов, то есть 
+строка с целочисленным значением будет считаться равной целому числу того же значения.
+
+// ТО ЖЕ ЧТО И CONTAINS ТОЛЬКО НАОБОРОТ 

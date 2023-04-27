@@ -1,0 +1,27 @@
+random()
+Метод random возвращает случайный элемент из коллекции:
+
+$collection = collect([1, 2, 3, 4, 5]);
+
+$collection->random();
+
+// 4 - (retrieved randomly)
+Вы можете передать целое число в random, чтобы указать, сколько случайных элементов вы хотите получить. 
+Коллекция элементов всегда возвращается при явной передаче количества элементов, которые вы хотите 
+получить:
+
+$random = $collection->random(3);
+
+$random->all();
+
+// [2, 4, 5] - (retrieved randomly)
+Если в экземпляре коллекции меньше элементов, чем запрошено, метод random сгенерирует исключение 
+InvalidArgumentException.
+
+Метод random также принимает замыкание, которое получит текущий экземпляр коллекции:
+
+$random = $collection->random(fn ($items) => min(10, count($items)));
+
+$random->all();
+
+// [1, 2, 3, 4, 5] - (retrieved randomly)

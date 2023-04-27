@@ -1,0 +1,22 @@
+replaceRecursive()
+Этот метод работает как и replace, но он будет повторяться в массивах и применять тот же процесс замены к 
+внутренним значениям:
+
+$collection = collect([
+    'Taylor',
+    'Abigail',
+    [
+        'James',
+        'Victoria',
+        'Finn'
+    ]
+]);
+
+$replaced = $collection->replaceRecursive([
+    'Charlie',
+    2 => [1 => 'King']
+]);
+
+$replaced->all();
+
+// ['Charlie', 'Abigail', ['James', 'King', 'Finn']]

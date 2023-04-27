@@ -1,0 +1,18 @@
+every()
+Метод every используется для проверки того, что все элементы коллекции проходят указанный тест 
+истинности:
+
+collect([1, 2, 3, 4])->every(function ($value, $key) {
+    return $value > 2;
+});
+
+// false
+Если коллекция пуста, метод every вернет true:
+
+$collection = collect([]);
+
+$collection->every(function ($value, $key) {
+    return $value > 2;
+});
+
+// true

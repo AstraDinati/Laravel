@@ -1,0 +1,23 @@
+whereNotIn()
+Метод whereNotIn удаляет элементы из коллекции, если их значения присутствуют в указанном массиве:
+
+$collection = collect([
+    ['product' => 'Desk', 'price' => 200],
+    ['product' => 'Chair', 'price' => 100],
+    ['product' => 'Bookcase', 'price' => 150],
+    ['product' => 'Door', 'price' => 100],
+]);
+
+$filtered = $collection->whereNotIn('price', [150, 200]);
+
+$filtered->all();
+
+/*
+    [
+        ['product' => 'Chair', 'price' => 100],
+        ['product' => 'Door', 'price' => 100],
+    ]
+*/
+Метод whereNotIn использует «гибкое» сравнение при проверке значений элементов, что означает, что строка 
+с целым значением будет считаться равной целому числу того же значения. Используйте метод whereNotInStrict
+ для фильтрации с использованием «жесткого» сравнения.

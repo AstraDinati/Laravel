@@ -1,0 +1,10 @@
+split()
+Метод split разбивает коллекцию на указанное количество групп:
+
+$collection = collect([1, 2, 3, 4, 5]);
+
+$groups = $collection->split(3);
+
+$groups->all();
+
+// [[1, 2], [3, 4], [5]]

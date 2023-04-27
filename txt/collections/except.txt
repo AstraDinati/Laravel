@@ -1,0 +1,14 @@
+except()
+Метод except возвращает все элементы из коллекции, кроме тех, которые имеют указанные ключи:
+
+$collection = collect(['product_id' => 1, 'price' => 100, 'discount' => false]);
+
+$filtered = $collection->except(['price', 'discount']);
+
+$filtered->all();
+
+// ['product_id' => 1]
+Противоположным методу except является метод only.
+
+Примечание
+Поведение этого метода изменяется при использовании коллекций Eloquent.

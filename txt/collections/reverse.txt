@@ -1,0 +1,18 @@
+reverse()
+Метод reverse меняет порядок элементов коллекции на обратный, сохраняя исходные ключи:
+
+$collection = collect(['a', 'b', 'c', 'd', 'e']);
+
+$reversed = $collection->reverse();
+
+$reversed->all();
+
+/*
+    [
+        4 => 'e',
+        3 => 'd',
+        2 => 'c',
+        1 => 'b',
+        0 => 'a',
+    ]
+*/
