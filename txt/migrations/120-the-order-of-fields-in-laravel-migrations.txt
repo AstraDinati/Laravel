@@ -1,0 +1,33 @@
+Порядок полей в миграциях Laravel
+Можно менять порядок полей в таблицах. Для этого есть два метода (только для баз MySQL).
+
+На первое место
+Метод first помещает поле первым в таблице:
+
+<?php
+	public function up()
+	{
+		Schema::table('posts', function (Blueprint $table) {
+			$table->string('title')->first()->change();
+		});
+	}
+?>
+После поля
+А метод after помещает поле после указанного поля:
+
+<?php
+	public function up()
+	{
+		Schema::table('posts', function (Blueprint $table) {
+			$table->string('title')->after('id')->change();
+		});
+	}
+?>
+Практические задачи
+№1⊗pplrPmMgFO
+
+В таблице с юзерами переместите поле name на первое место.
+
+№2⊗pplrPmMgFO
+
+Добавьте к таблице с юзерами новое поле sex поле поля id.

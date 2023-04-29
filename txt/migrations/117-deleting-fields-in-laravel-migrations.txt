@@ -1,0 +1,22 @@
+Удаление полей в миграциях в Laravel
+Для удаления полей используется метод dropColumn:
+
+<?php
+	Schema::table('posts', function (Blueprint $table) {
+		$table->dropColumn('name');
+	});
+?>
+Можно удалить несколько столбцов таблицы, передав в качестве параметра метода массив их имен:
+
+<?php
+	Schema::table('posts', function (Blueprint $table) {
+		$table->dropColumn(['name', 'desc']);
+	});
+?>
+№1⊗pplrPmMgFRm
+
+Удалите из таблицы с юзерами поле age.
+
+№2⊗pplrPmMgFRm
+
+Удалите из таблицы с юзерами поля name и surname.

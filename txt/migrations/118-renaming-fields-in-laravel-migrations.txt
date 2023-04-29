@@ -1,0 +1,11 @@
+Переименование полей в миграциях Laravel
+Для переименования полей используется метод renameColumn:
+
+<?php
+	Schema::table('posts', function (Blueprint $table) {
+		$table->renameColumn('name', 'title');
+	});
+?>
+№1⊗pplrPmMgFRn
+
+В таблице с юзерами переименуйте поле name в поле first_name, а поле surname в second_name.

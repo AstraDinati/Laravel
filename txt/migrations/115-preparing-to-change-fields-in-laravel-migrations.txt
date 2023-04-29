@@ -1,0 +1,24 @@
+Подготовка к изменению полей в миграциях Laravel
+Можно также изменять созданные поля. Есть, однако, нюанс. Для этого необходимо установить с 
+помощью composer дополнительный пакет doctrine/dbal. Давайте сделаем это:
+
+composer require doctrine/dbal
+Если вы планируете изменять столбцы, созданные с помощью метода timestamp, вы также должны 
+добавить следующую конфигурацию в файл config/database.php вашего приложения:
+
+<?php
+	use Illuminate\Database\DBAL\TimestampType;
+	
+	'dbal' => [
+	    'types' => [
+	        'timestamp' => TimestampType::class,
+	    ],
+	],
+?>
+№1⊗pplrPmMgPFCh
+
+Установите библиотеку Doctrine DBAL.
+
+№2⊗pplrPmMgPFCh
+
+Внесите изменение в конфигурацию, чтобы можно было пользоваться методом timestamp.

@@ -1,0 +1,59 @@
+Модификаторы полей в Laravel
+При создании и изменении полей мы можем не только задавать им тип, но и указывать некоторые 
+модификаторы.
+
+Обнуляемость
+С помощью метода nullable можно сделать столбец обнуляемым:
+
+<?php
+	Schema::create('posts', function (Blueprint $table) {
+		$table->string('desc')->nullable();
+	});
+?>
+Можно задавать модификатор не только при создании поля, но и при его изменении:
+
+<?php
+	Schema::table('posts', function (Blueprint $table) {
+		$table->string('desc')->nullable()->change();
+	});
+?>
+Значение по умолчанию
+С помощью метода default можно указать для поля значение по умолчанию:
+
+<?php
+	Schema::create('posts', function (Blueprint $table) {
+		$table->string('desc')->default('some value');
+	});
+?>
+Комментарии
+С помощью метода comment можно добавлять комментарии к столбцам:
+
+<?php
+	Schema::create('posts', function (Blueprint $table) {
+		$table->string('desc')->comment('my comment');
+	});
+?>
+Безнаковость
+С помощью метода unsigned можно сделать поле типа integer беззнаковыми UNSIGNED:
+
+<?php
+	Schema::create('posts', function (Blueprint $table) {
+		$table->integer('vote')->unsigned();
+	});
+?>
+Практические задачи
+№1⊗pplrPmMgFM
+
+Добавьте в таблице с юзерами комментарий к полю email.
+
+№2⊗pplrPmMgFM
+
+Сделайте так, чтобы в таблице с юзерами поле salary по умолчанию принимало значение 0.
+
+№3⊗pplrPmMgFM
+
+Разрешите в таблице с юзерами полю age принимать значение null.
+
+№4⊗pplrPmMgFM
+
+Сделайте в таблице с юзерами поле age беззнаковым.

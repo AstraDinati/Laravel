@@ -1,0 +1,3 @@
+all() - join()
+keyBy() - sole()
+some() - zip()

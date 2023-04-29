@@ -1,0 +1,29 @@
+Запуск миграций в Laravel
+Давайте теперь научимся запускать миграции. Пусть для примера у нас есть следующая тестовая миграция, 
+создающая таблицу с постами (приведенные команды мы еще будем изучать в следующих уроках):
+
+<?php
+	class CreatePostsTable extends Migration
+	{
+		public function up()
+		{
+			Schema::create('posts', function (Blueprint $table) {
+				$table->id();
+				$table->string('name');
+				$table->text('text');
+			});
+		}
+	
+		public function down()
+		{
+			Schema::dropIfExists('posts');
+		}
+	}
+?>
+Давайте применим нашу миграцию. Для этого нужно выполнить artisan команду migrate:
+
+php artisan migrate
+№1⊗pplrPmMgRn
+
+Сделайте миграцию, создающую таблицу с юзерами. Примените ее. Откройте PMA и убедитесь, что ваша миграция 
+применилась.
