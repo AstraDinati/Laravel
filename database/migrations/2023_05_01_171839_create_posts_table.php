@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeUsers5Table extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class ChangeUsers5Table extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table){
-            $table->string('e-mail')->comment('comment');
-            $table->integer('salary')->default(0);
-            $table->integer('age')->nullable()->unsigned();
+        Schema::create('posts', function (Blueprint $table) {
+            $table->id();
+            $table->string('title', 20);
+            $table->string('slug', 20);
+            $table->integer('likes');
+            $table->date('created_at');
+            $table->date('updated_at');
         });
     }
 
@@ -27,6 +30,6 @@ class ChangeUsers5Table extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('posts');
     }
 }

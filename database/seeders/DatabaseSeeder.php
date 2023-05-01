@@ -2,6 +2,13 @@
 
 namespace Database\Seeders;
 
+use Database\Seeders\UsersSeeder;
+use Database\Seeders\PostsSeeder;
+use Database\Seeders\CountriesSeeder;
+use Database\Seeders\CitiesSeeder;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +20,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call([
+            UsersSeeder::class,
+            PostsSeeder::class,
+        ]);
     }
 }

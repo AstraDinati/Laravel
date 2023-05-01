@@ -1,0 +1,24 @@
+Тестовые таблицы в Laravel
+Давайте создадим и наполним тестовые таблицы, которыми мы будем пользоваться в следующих 
+разделах учебника при изучении работы с базами данных:
+
+posts
+id
+title(varchar)
+slug(varchar)
+likes(integer)
+created_at(datetime)
+updated_at(datetime)
+
+
+users
+id
+name(varchar)
+email(varchar)
+age(integer)
+salary(integer)
+created_at(datetime)
+updated_at(datetime)
+№1⊗pplrPmSdTT
+
+Сделайте миграции и сидеры для указанных таблиц.

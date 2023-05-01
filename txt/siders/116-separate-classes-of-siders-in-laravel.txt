@@ -1,0 +1,35 @@
+Отдельные классы сидеров в Laravel
+Не обязательно размещать все сидеры в одном классе DatabaseSeeder. Их можно разносить по разным
+ классам.
+
+Сделаем, к примеру, сидер для заполнения таблицы с постами:
+
+<?php
+	namespace Database\Seeders;
+	
+	use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+	use Illuminate\Database\Seeder;
+	use Illuminate\Support\Str;
+	
+	class PostSeeder extends Seeder
+	{
+		public function run()
+		{
+			
+		}
+	}
+?>
+Запустим его отдельно следующей командой:
+
+php artisan db:seed --class=PostSeeder
+№1⊗pplrPmSdDC
+
+Сделайте отдельный сидер для таблицы с юзерами.
+
+№2⊗pplrPmSdDC
+
+Сделайте отдельный сидер для таблицы с городами.
+
+№3⊗pplrPmSdDC
+
+Сделайте отдельный сидер для таблицы со странами.

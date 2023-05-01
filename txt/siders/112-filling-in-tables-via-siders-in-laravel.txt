@@ -1,0 +1,68 @@
+Заполнение таблиц через сидеры в Laravel
+Давайте теперь пропишем в нашем сидере команды на заполнение какой-нибудь таблицы.
+
+Для начала нам нужно заюзать фасад DB позволяющий осуществлять вставку данных:
+
+<?php
+	use Illuminate\Support\Facades\DB; // подключаем
+	
+	class DatabaseSeeder extends Seeder
+	{
+		public function run()
+		{
+			// команды
+		}
+	}
+?>
+Давайте теперь вставим в таблицу с постами новый пост. Это делается следующим образом:
+
+<?php
+	use Illuminate\Support\Facades\DB;
+	
+	class DatabaseSeeder extends Seeder
+	{
+		public function run()
+		{
+			DB::table('posts')->insert([
+				'title' => 'title 1',
+				'slug'  => 'post-1',
+				'text'  => 'text text text 1',
+			]);
+		}
+	}
+?>
+Можно вставить не одну запись, а сразу несколько:
+
+<?php
+	use Illuminate\Support\Facades\DB;
+	
+	class DatabaseSeeder extends Seeder
+	{
+		public function run()
+		{
+			DB::table('posts')->insert([
+				[
+					'title' => 'title 1',
+					'slug'  => 'post-1',
+					'text'  => 'text text text 1',
+				],
+				[
+					'title' => 'title 2',
+					'slug'  => 'post-2',
+					'text'  => 'text text text 2',
+				],
+				[
+					'title' => 'title 3',
+					'slug'  => 'post-3',
+					'text'  => 'text text text 3',
+				],
+			]);
+		}
+	}
+?>
+Теперь можно в терминале запустить команду на вставку данных из сидера:
+
+php artisan db:seed
+№1⊗pplrPmSdTF
+
+Добавьте данные в таблицу с юзерами.
