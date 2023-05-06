@@ -1,0 +1,26 @@
+Условие whereIn при выборке через QB в Laravel
+Метод whereIn проверяет, что значения столбца содержатся в указанном массиве:
+
+<?php
+	$posts = DB::table('posts')
+		->whereIn('id', [1, 2, 3])
+		->get();
+	
+	dump($posts);
+?>
+Метод whereNotIn проверяет, что значения столбца не содержатся в указанном массиве:
+
+<?php
+	$posts = DB::table('posts')
+		->whereNotIn('id', [1, 2, 3])
+		->get();
+	
+	dump($posts);
+?>
+№1⊗pplrPmQBCWI
+
+Получите юзеров с id, равными 1, 2, 3 и 5.
+
+№2⊗pplrPmQBCWI
+
+Получите юзеров с id, НЕ равными 1, 2, 3 и 5.

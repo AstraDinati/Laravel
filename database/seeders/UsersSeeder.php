@@ -17,7 +17,7 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 1; $i <= 10; ++$i) {
+        for ($i = 1; $i <= 30; ++$i) {
             $date1 = date('Y-m-d', mt_rand(1262304000, 1672531200));
             $date2 = date('Y-m-d', mt_rand(1262304000, 1672531200));
             if ($date1 >= $date2) {
@@ -28,6 +28,7 @@ class UsersSeeder extends Seeder
                     'salary' => mt_rand(1000, 5000),
                     'created_at' => $date2,
                     'updated_at' => $date1,
+                    'cities_id' => mt_rand(1,3)
                 ]);
             } else {
                 DB::table('users')->insert([
@@ -37,6 +38,7 @@ class UsersSeeder extends Seeder
                     'salary' => mt_rand(1000, 5000),
                     'created_at' => $date1,
                     'updated_at' => $date2,
+                    'cities_id' => mt_rand(1,3)
                 ]);
             }
         }

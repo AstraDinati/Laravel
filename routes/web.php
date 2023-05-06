@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Cache;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\PostsController;
 use App\Http\Controllers\CollectionController;
 
 /*
@@ -27,6 +29,8 @@ Route::get('/post/{id}', [PostController::class, 'show']);
 Route::get('/user/{id}', function ($id) {
     return 'user/{id} ' . $id;
 });
+
+Route::get('/qwerty', [UsersController::class, 'show']);
 
 Route::get('/user/{name}/{age}/{salary}', [UserController::class, 'show']);
 

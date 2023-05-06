@@ -1,0 +1,26 @@
+Условие whereBetween при выборке через QB в Laravel
+Метод whereBetween проверяет, что значения столбца находится в указанном интервале:
+
+<?php
+	$posts = DB::table('posts')
+		->whereBetween('likes', [1, 100])
+		->get();
+		
+	dump($posts);
+?>
+Метод whereNotBetween проверяет, что значения столбца находится вне указанного интервала:
+
+<?php
+	$posts = DB::table('posts')
+		->whereNotBetween('likes', [1, 100])
+		->get();
+		
+	dump($posts);
+?>
+№1⊗pplrPmQBCWB
+
+Получите юзеров, возраст которых находится в промежутке от 30 до 40.
+
+№2⊗pplrPmQBCWB
+
+Получите юзеров, возраст которых находится НЕ в промежутке от 30 до 40.

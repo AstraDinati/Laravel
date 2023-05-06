@@ -4,8 +4,8 @@ namespace Database\Seeders;
 
 use Database\Seeders\UsersSeeder;
 use Database\Seeders\PostsSeeder;
-use Database\Seeders\CountriesSeeder;
 use Database\Seeders\CitiesSeeder;
+use Database\Seeders\CountriesSeeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UsersSeeder::class,
             PostsSeeder::class,
+            // CitiesSeeder::class
         ]);
     }
 }

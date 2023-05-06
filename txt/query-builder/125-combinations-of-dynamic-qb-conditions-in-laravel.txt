@@ -1,0 +1,26 @@
+Комбинации динамических условий QB в Laravel
+Можно комбинировать условия в одном методе:
+
+<?php
+	$post = DB::table('posts')
+		->whereIdAndSlug(1, 'my-page')
+		->first();
+	
+	dump($post);
+?>
+Можно также объединять условия через логическое ИЛИ:
+
+<?php
+	$post = DB::table('posts')
+		->whereIdOrSlug(1, 'my-page')
+		->first();
+	
+	dump($post);
+?>
+№1⊗pplrPmQBDCC
+
+Получите юзера с полем id, равным 3, И полем age, равным 20
+
+№2⊗pplrPmQBDCC
+
+Получите юзера с полем id, равным 3, ИЛИ полем age, равным 20.

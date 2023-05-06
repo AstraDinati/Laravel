@@ -1,0 +1,22 @@
+Проверка на NULL при выборке через QB в Laravel
+Метод whereNull проверяет, что значения столбца равны NULL:
+
+<?php
+	$posts = DB::table('posts')
+		->whereNull('updated_at')
+		->get();
+	
+	dump($posts);
+?>
+Метод whereNotNull проверяет, что значения столбца не равны NULL:
+
+<?php
+	$posts = DB::table('posts')
+		->whereNotNull('updated_at')
+		->get();
+	
+	dump($posts);
+?>
+№1⊗pplrPmQBNCh
+
+Проверьте оба изученных метода на каком-нибудь поле таблицы с юзерами.
