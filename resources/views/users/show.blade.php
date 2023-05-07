@@ -48,4 +48,31 @@
     @dump($skip)
     @dump($increment)
     @dump($leftJoin)
+    @dump($modelstry)
+    <table>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>email</th>
+            <th>age</th>
+            <th>salary</th>
+            <th>created_at</th>
+            <th>updated_at</th>
+            <th>cities_id</th>
+        </tr>
+        @foreach($modelstry as $modeltry)
+        <tr>
+            <td>{{ $modeltry->id }}</td>
+            <td>{{ $modeltry->name }}</td>
+            <td>{{ $modeltry->email }}</td>
+            <td>{{ $modeltry->age }}</td>
+            <td>{{ $modeltry->salary }}</td>
+            <td>{{ $modeltry->created_at }}</td>
+            <td>{{ $modeltry->updated_at }}</td>
+            <td>{{ $modeltry->cities_id }}</td>
+        </tr>
+        @endforeach
+    </table>
+    @dump($modelWhere)
+    @dump($modelFind)
     </x-layoit>

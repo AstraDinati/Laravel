@@ -1,0 +1,29 @@
+Генерация моделей Eloquent в Laravel
+Для создания файлов моделей используются команды artisan. Давайте для примера создадим модель Post:
+
+php artisan make:model Post
+В результате будет создан следующий файл:
+
+<?php
+	namespace App;
+	
+	use Illuminate\Database\Eloquent\Factories\HasFactory;
+	use Illuminate\Database\Eloquent\Model;
+	
+	class Post extends Model
+	{
+		
+	}
+?>
+№1⊗pplrPmEqMG
+
+С помощью artisan сгенерируйте модель для таблицы cities.
+
+№2⊗pplrPmEqMG
+
+Для таблицы users уже есть модель по умолчанию. Нам она пока не нужна. Переместите этот файл в другое место,
+ чтобы он нам не мешал.
+
+№3⊗pplrPmEqMG
+
+С помощью artisan сгенерируйте модель для таблицы users.

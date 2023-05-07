@@ -1,0 +1,53 @@
+Получение данных из моделей Eloquent в Laravel
+С помощью статического метода all можно получить все записи из таблицы. Давайте обратимся к модели Post и получим все данные
+ из таблицы posts в виде массива объектов:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show()
+		{
+			$posts = Post::all();
+			dump($posts); // массив объектов
+		}
+	}
+?>
+Каждый объект в массиве будет принадлежать классу модели Post. Давайте переберем массив циклом и обратимся к каждому объекту
+ по отдельности:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show()
+		{
+			$posts = Post::all();
+			
+			foreach ($posts as $post) {
+				dump($post); // объект класса Post
+			}
+		}
+	}
+?>
+Каждая объект представляет собой одну запись в таблице. Свойствами этого объекта служат поля таблицы:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show()
+		{
+			$posts = Post::all();
+			
+			foreach ($posts as $post) {
+				dump($post->title);
+				dump($post->text);
+			}
+		}
+	}
+?>
+№1⊗pplrPmEqMGD
+
+Получите всех юзеров.
+
+№2⊗pplrPmEqMGD
+
+Передайте юзеров в представление и выведите их в виде HTML таблицы.

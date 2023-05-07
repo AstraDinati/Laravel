@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Collection;
-
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
@@ -42,6 +42,22 @@ class UsersController extends Controller
         $increment = DB::table('users')->where('id', 4)->increment('age', 2);
         // $delete = DB::table('users')->delete();
         $leftJoin = DB::table('users')->leftJoin('cities', 'cities.id', '=', 'users.cities_id')->get();
+        $modelstry = User::all();
+        $modelWhere = User::where('age', '>', 30)->first();
+        $modelFind = User::find([4,6,8]);
+        // $modelSave = new User;
+        // $modelSave->name = 'Andrey';
+        // $modelSave->email = 'vad.ik@mail.ru';
+        // $modelSave->age = 26;
+        // $modelSave->salary = 2000;
+        // $modelSave->cities_id = 3;
+        // $modelSave->save();
+        // $modelChange = User::find(31);
+        // $modelChange->email = 'qwerty@list.com';
+        // $modelChange->save();
+        // User::where('age', '>', 30)->delete();
+        User::where('age', '>', 30)->restore();
+        // User::destroy(31, 14, 15);
 
         return view('users.show', ['title' => 'users title',
         'users' => $users, 'example' => $example, 'example1' => $example1,
@@ -51,7 +67,8 @@ class UsersController extends Controller
         'where' => $where, 'whereCreated_at' => $whereCreated_at, 
         'whereIdOrCreated_at' => $whereIdOrCreated_at, 'orderBy' => $orderBy, 'latest' => $latest,
         'inRandomOrder' => $inRandomOrder, 'take' => $take, 'skip' => $skip, 'update' => $update,
-        'increment' => $increment, 'leftJoin' => $leftJoin
+        'increment' => $increment, 'leftJoin' => $leftJoin, 'modelstry' => $modelstry, 'modelWhere' => $modelWhere,
+        'modelFind' => $modelFind
         ]);
     }
 }
