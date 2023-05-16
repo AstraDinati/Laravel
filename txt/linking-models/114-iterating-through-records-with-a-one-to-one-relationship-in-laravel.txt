@@ -1,0 +1,51 @@
+Перебор записей со связью один к одному в Laravel
+Давайте теперь получим не один пост, а несколько, и перебем их циклом:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show()
+		{
+			$posts = Post::all();
+			
+			foreach ($posts as $post) {
+				dump($post->title);
+			}
+		}
+	}
+?>
+При переборе для каждого поста также будет доступно свойство thumbnail, содержащее миниатюру:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show()
+		{
+			$posts = Post::all();
+			
+			foreach ($posts as $post) {
+				dump($post->thumbnail);
+			}
+		}
+	}
+?>
+Давайте выведем какие-нибудь данные нашей миниатюры:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show()
+		{
+			$posts = Post::all();
+			
+			foreach ($posts as $post) {
+				dump($post->thumbnail->path);
+				dump($post->thumbnail->alt);
+			}
+		}
+	}
+?>
+№1⊗pplrPmMROTOL
+
+Получите всех пользователей вместе с их профилями, передайте их в представление и выведите на экран в виде HTML 
+таблицы.

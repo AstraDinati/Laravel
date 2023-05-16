@@ -3,11 +3,15 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Cache;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\RolesController;
+use App\Http\Controllers\CitiesController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ProfilesController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\CollectionController;
-
+use App\Http\Controllers\CountriesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +33,15 @@ Route::get('/post/{id}', [PostController::class, 'show']);
 Route::get('/user/{id}', function ($id) {
     return 'user/{id} ' . $id;
 });
+Route::get('/zxc', [CommentsController::class, 'show']);
+
+Route::get('/qwe123123qwe', [CitiesController::class, 'show']);
+
+Route::get('/qwe123123', [CountriesController::class, 'show']);
+
+Route::get('/qwe123', [ProfilesController::class, 'show']);
+
+Route::get('/qwerty123', [RolesController::class, 'show']);
 
 Route::get('/qwerty', [UsersController::class, 'show']);
 

@@ -1,0 +1,31 @@
+Жадная загрузка по умолчанию в Laravel
+Иногда требуется постоянная загрузка некоторых отношений при извлечении модели. Для этого нужно определить свойство $with в модели.
+
+Для примера давайте сделаем так, чтобы категории всегда загружались вместе со своими постами:
+
+<?php
+	class Category extends Model
+	{
+		protected $with = ['post'];
+		
+		public function posts()
+		{
+			return $this->hasMany(Post::class);
+		}
+	}
+?>
+Теперь при переборе постов лишнего запроса не будет:
+
+<?php
+	class CategoryController extends Controller
+	{
+		public function show()
+		{
+			$category = Category::find(1);
+			
+			foreach ($category->posts as $post) {
+				dump($post); // лишнего запроса не будет
+			}
+		}
+	}
+?>

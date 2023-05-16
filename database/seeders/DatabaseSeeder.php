@@ -3,8 +3,12 @@
 namespace Database\Seeders;
 
 use Database\Seeders\UsersSeeder;
+use Database\Seeders\CommentsSeeder;
+use Database\Seeders\CustomersSeeder;
+use Database\Seeders\UserRoleSeeder;
 use Database\Seeders\PostsSeeder;
 use Database\Seeders\CitiesSeeder;
+use Database\Seeders\ProfilesSeeder;
 use Database\Seeders\CountriesSeeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -21,8 +25,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            UsersSeeder::class,
-            PostsSeeder::class,
+            // UsersSeeder::class,
+            // UserRoleSeeder::class,
+            // PostsSeeder::class,
+            CustomersSeeder::class,
+            // CommentsSeeder::class,
+            // ProfilesSeeder::class,
             // CitiesSeeder::class
         ]);
     }

@@ -15,18 +15,12 @@ class CitiesSeeder extends Seeder
      *
      * @return void
      */
-    // public function run()
-    // {
-    //     DB::table('cities')->insert([
-    //         [
-    //             'name' => 'Minsk'
-    //         ],
-    //         [
-    //             'name' => 'Moscow'
-    //         ],
-    //         [
-    //             'name' => 'Saint-Petersburg'
-    //         ]
-    //     ]);
-    // }
+    public function run()
+    {
+        for ($i = 1; $i <= 30; ++$i) {
+            DB::table('cities')->insert([
+                'name' => Str::random(10),
+            ]);
+        }
+    }
 }

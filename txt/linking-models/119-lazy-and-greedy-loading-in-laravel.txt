@@ -1,0 +1,49 @@
+Ленивая и жадная загрузка в Laravel
+Связанные модели в Laravel загружаются отложено. Это значит, что SQL запрос выполняется в момент обращения к объекту модели. Это на самом деле плохо, так как выполняется 
+большое количество запросов к базе. Давайте посмотрим на примере.
+
+Пусть у нас таблица с категориями связана с таблицей с постами отношением hasMany. Давайте для нашей категории переберем циклом коллекцию ее постов. В результате SQL запрос 
+будет отправляться каждую итерацию цикла:
+
+<?php
+	class CategoryController extends Controller
+	{
+		public function show()
+		{
+			$category = Category::find(1);
+			
+			foreach ($category->posts as $post) {
+				dump($post); // тут каждый раз шлется запрос
+			}
+		}
+	}
+?>
+Для решения проблемы мы можем использовать жадную (нетерпеливую) загрузку. С помощью метода with мы можем заранее подгрузить данные связанной модели. Давайте сделаем это:
+
+<?php
+	class CategoryController extends Controller
+	{
+		public function show()
+		{
+			$category = Category::with(['post'])->first();
+		}
+	}
+?>
+Теперь при переборе циклом лишних запросов не будет:
+
+<?php
+	class CategoryController extends Controller
+	{
+		public function show()
+		{
+			$category = Category::with(['post'])->first();
+			
+			foreach ($category->posts as $post) {
+				dump($post);
+			}
+		}
+	}
+?>
+№1⊗pplrPmMREL
+
+Выберите несколько задач из предыдущих уроков и переделайте их код на жадную загрузку.

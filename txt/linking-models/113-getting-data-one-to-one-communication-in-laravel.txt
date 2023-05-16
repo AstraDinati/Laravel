@@ -1,0 +1,59 @@
+Получение данных связь один к одному в Laravel
+В предыдущем уроке мы связали посты и их миниатюры отношением hasOne. Давайте теперь в контроллере получим 
+какой-нибудь пост:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show()
+		{
+			$post = Post::find(1);
+			dump($post);
+		}
+	}
+?>
+Этот пост, как вы уже знаете, будет представлять собой объект, в котором свойствами будут поля таблицы. Ввыведем, 
+к примеру, содержимое поля title:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show()
+		{
+			$post = Post::find(1);
+			dump($post->title);
+		}
+	}
+?>
+В объекте с постом также появится свойство thumbnail. Имя этого свойства соответствует методу, который мы сделали 
+в модели с постами для связывания моделей. Это свойство будет содержать объект с миниатюрой:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show()
+		{
+			$post = Post::find(1);
+			dump($post->thumbnail); // объект с миниатюрой
+		}
+	}
+?>
+Давайте выведем какое-нибудь поле нашей миниатюры:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show()
+		{
+			$post = Post::find(1);
+			dump($post->thumbnail->path);
+		}
+	}
+?>
+№1⊗pplrPmMRGDOTO
+
+Получите какого-нибудь юзера вместе с его профилем.
+
+№2⊗pplrPmMRGDOTO
+
+Отправьте полученного юзера в представление и выведите его данные в разных тегах.

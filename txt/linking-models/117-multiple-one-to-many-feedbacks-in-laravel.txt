@@ -1,0 +1,75 @@
+Несколько обратных связей один ко многим в Laravel
+Может такое быть, что одна таблица имеет несколько связей. Давайте посмотрим, как действовать в таком случае.
+
+Пусть у нас есть таблица с постами:
+
+posts
+id
+title
+Таблица с юзерами:
+
+users
+id
+name
+И пусть у нас есть таблица с комментами, в который каждый коммент связан со своим постом и со своим юзером:
+
+comments
+id
+text
+post_id
+user_id
+Давайте пропишем эту связь в модели для комментов:
+
+<?php
+	class Comment extends Model
+	{
+		public function post()
+		{
+			return $this->belongsTo(Post::class);
+		}
+		public function user()
+		{
+			return $this->belongsTo(User::class);
+		}
+	}
+?>
+Теперь при получении коммента мы можем получить его пост и его юзера:
+
+<?php
+	class CommentController extends Controller
+	{
+		public function show()
+		{
+			$comment = Comment::find(1);
+			dump($comment);
+			dump($comment->post);
+			dump($comment->user);
+		}
+	}
+?>
+№1⊗pplrPmMRSIOTM
+
+Сделайте следующие таблицы:
+
+cities
+id
+name
+positions
+id
+name
+users
+id
+name
+city_id
+position_id
+№2⊗pplrPmMRSIOTM
+
+Сделайте модель с юзерами, модель с городами и модель с должностями.
+
+№3⊗pplrPmMRSIOTM
+
+Свяжите юзера с его городом и с его должностью отношением belongsTo.
+
+№4⊗pplrPmMRSIOTM
+
+Получите юзера вместе с его городом и должностью.

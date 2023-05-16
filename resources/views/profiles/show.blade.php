@@ -2,5 +2,6 @@
     <x-slot name="title">
         {{ $title }}
     </x-slot>
-    @dump($user)
-</x-layoit>
+    @dump($profile)
+    @dump($profile->user->login)
+    </x-layoit>

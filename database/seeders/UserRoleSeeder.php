@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class UsersSeeder extends Seeder
+class UserRoleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,9 +15,10 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 1; $i <= 20; ++$i) {
-            DB::table('users')->insert([
-                'name' => Str::random(10),
+        for ($i = 1; $i <= 100; ++$i){
+            DB::table('user_role')->insert([
+                'user_id' => mt_rand(1, 20),
+                'role_id' => mt_rand(1, 6),
             ]);
         }
     }

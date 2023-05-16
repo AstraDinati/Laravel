@@ -1,0 +1,87 @@
+Связь многие ко многим в Laravel
+Пусть каждый пост может принадлежать нескольким категориям. В этом случае они будут связаны через промежуточную таблицу связи.
+
+Давайте посмотрим на структуру таблиц. Таблица с постами:
+
+posts
+id
+title
+Таблица с категориями:
+
+category
+id
+name
+Таблица связи:
+
+category_post
+id
+post_id
+category_id
+Первая связь
+Каждый пост принадлежит многим категориям. Давайте пропишем эту связь через отношение belongsToMany:
+
+<?php
+	class Post extends Model
+	{
+		public function categories()
+		{
+			return $this->belongsToMany(Category::class);
+		}
+	}
+?>
+Получим пост вместе с его категориями:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show()
+		{
+			$post = Post::find(1);
+			dump($post->categories);
+		}
+	}
+?>
+Вторая связь
+Каждая категория принадлежит многим постам. Давайте пропишем эту связь через отношение belongsToMany:
+
+<?php
+	class Category extends Model
+	{
+		public function posts()
+		{
+			return $this->belongsToMany(Post::class);
+		}
+	}
+?>
+Получим категорию вместе с ее постами:
+
+<?php
+	class CategoryController extends Controller
+	{
+		public function show()
+		{
+			$category = Category::find(1);
+			dump($category->posts);
+		}
+	}
+?>
+Практические задачи
+Пусть у нас есть юзеры и их роли. Каждый юзер может иметь много ролей. Даны соответствующие таблицы:
+
+users
+id
+name
+roles
+id
+name
+№1⊗pplrPmMRMTM
+
+Создайте для указанных таблиц таблицу связи.
+
+№2⊗pplrPmMRMTM
+
+Свяжите юзеров с ролями отношением belongsToMany. Получите всех юзеров вместе с их ролями.
+
+№3⊗pplrPmMRMTM
+
+Свяжите роли с юзерами отношением belongsToMany. Получите всех роли вместе с их юзерами.

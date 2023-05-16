@@ -1,0 +1,73 @@
+Жадная загрузка множественных отношений в Laravel
+Пусть у нас есть таблица с комментами, в который каждый коммент связан со своим постом и со своим юзером:
+
+comments
+id
+text
+post_id
+user_id
+Пропишем эту связь:
+
+<?php
+	class Comment extends Model
+	{
+		public function post()
+		{
+			return $this->belongsTo(Post::class);
+		}
+		
+		public function user()
+		{
+			return $this->belongsTo(User::class);
+		}
+	}
+?>
+Давайте получим все комменты:
+
+<?php
+	class CommentController extends Controller
+	{
+		public function show()
+		{
+			$comments = Comment::all();
+			dump($comments);
+		}
+	}
+?>
+Переберем комменты циклом и в цикле для каждого коммента будем получать его пост и его юзера:
+
+<?php
+	class CommentController extends Controller
+	{
+		public function show()
+		{
+			$comments = Comment::all();
+			
+			foreach ($comments as $comment) {
+				dump($comment);
+				dump($comment->post);
+				dump($comment->user);
+			}
+		}
+	}
+?>
+В этом случае в каждой итерации цикла будут выполнятся лишние SQL запросы. Давайте исправим проблему, заранее загрузив данные двух связанных моделей:
+
+<?php
+	class CommentController extends Controller
+	{
+		public function show()
+		{
+			$comments = Comment::with(['post', 'user'])->get();
+			
+			foreach ($comments as $comment) {
+				dump($comment);
+				dump($comment->post);
+				dump($comment->user);
+			}
+		}
+	}
+?>
+№1⊗pplrPmMRELM
+
+Придумайте аналогичную задачу со своими таблицами и реализуйте ее.

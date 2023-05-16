@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class UsersSeeder extends Seeder
+class ProfilesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,9 +15,12 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 1; $i <= 20; ++$i) {
-            DB::table('users')->insert([
+        for ($i = 1; $i <= 100; ++$i){
+            DB::table('profiles')->insert([
                 'name' => Str::random(10),
+                'surname' => Str::random(10),
+                'email' => Str::random(5) . '@' . Str::random(3) . '.' . Str::random(3),
+                'user_id' => $i
             ]);
         }
     }

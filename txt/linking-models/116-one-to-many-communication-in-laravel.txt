@@ -1,0 +1,64 @@
+Связь один ко многим в Laravel
+Давайте теперь изучим связь один ко многим. Такая связь образуется, когда запись одной таблицы соответствует многим 
+записям из другой таблицы.
+
+Давайте посмотрим на примере. Пусть у нас есть следующая таблица с категориями:
+
+category
+id
+name
+Пусть также у нас есть следующая таблица с постами:
+
+posts
+id
+title
+category_id
+Заюзаем в модели с категориями модель с постами:
+
+<?php
+	use App\Models\Post;
+	
+	class Category extends Model
+	{
+		
+	}
+?>
+Каждая категория имеет много постов, которые ссылаются на нее. Давайте в модели с категориями сделаем метод для 
+получения постов:
+
+<?php
+	use App\Models\Post;
+	
+	class Category extends Model
+	{
+		public function posts()
+		{
+			
+		}
+	}
+?>
+Пропишем в этом методе связь через отношение hasMany:
+
+<?php
+	class Category extends Model
+	{
+		public function posts()
+		{
+			return $this->hasMany(Post::class);
+		}
+	}
+?>
+№1⊗pplrPmMROTM
+
+Сделайте следующие таблицы:
+
+cities
+id
+name
+country_id
+countries
+id
+name
+№2⊗pplrPmMROTM
+
+Свяжите таблицу countries с таблицей cities отношением hasMany.

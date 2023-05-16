@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeUsersTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class ChangeUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->softDeletes();
+        Schema::create('posts', function (Blueprint $table) {
+            $table->id();
+            $table->text('text');
         });
     }
 
@@ -25,6 +26,6 @@ class ChangeUsersTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('post');
     }
 }
