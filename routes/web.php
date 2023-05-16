@@ -28,7 +28,7 @@ Route::get('/', function () {
 });
 
 // Route::get('/post/',['App\\Http\\Controllers\\PostController', 'show']);
-Route::get('/post/{id}', [PostController::class, 'show']);
+
 
 Route::get('/user/{id}', function ($id) {
     return 'user/{id} ' . $id;
@@ -42,6 +42,13 @@ Route::get('/qwe123123', [CountriesController::class, 'show']);
 Route::get('/qwe123', [ProfilesController::class, 'show']);
 
 Route::get('/qwerty123', [RolesController::class, 'show']);
+
+// Route::get('/result', [PostsController::class, 'result']);
+// Route::post('/result', [PostsController::class, 'result']);
+
+Route::match(['get', 'post'], '/form/{id}/{login}', [PostsController::class, 'form'])->where('id', '[0-9]+');
+
+Route::match(['get', 'post'], '/test/method/', [PostsController::class, 'method']);
 
 Route::get('/qwerty', [UsersController::class, 'show']);
 

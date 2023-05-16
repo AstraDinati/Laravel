@@ -1,0 +1,14 @@
+Сложные имена полей в формах в Laravel
+Иногда имена элементов форм могут представлять массивы, наподобие такого:
+
+<form action="">
+	<input type="text" name="user[name]">
+	<input type="text" name="user[surname]">
+	<input type="submit">
+</form>
+Для получения значений таких инпутов вы можете использовать точечную запись для обращения к массивам:
+
+<?php
+	$name = $request->input('user.name');
+	$name = $request->input('user.surname');
+?>

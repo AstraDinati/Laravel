@@ -1,0 +1,82 @@
+Отправка форм методом GET в Laravel
+Давайте теперь научимся отправлять формы методом GET и получать их данные в контроллере. Сделаем для этого два метода контроллера. Первый метод будет показывать форму, 
+а второй метод будет обрабатывать данные этой формы после ее отправки.
+
+Для начала сделаем два роута. Первый роут для показа формы:
+
+<?php
+	Route::get('/form', [PostController::class, 'form']);
+?>
+Второй роут для обработки данных отправленной формы:
+
+<?php
+	Route::get('/result', [PostController::class, 'result']);
+?>
+Теперь в представлении сделаем нашу форму. В атрибуте action не забудем указать URL роута, который отвечает за обработку формы:
+
+<form action="/result">
+	<input name="title">
+	<input name="slug">
+	<input type="submit">
+</form>
+Давайте теперь сделаем действия в контроллере:
+
+<?php
+	class PostController extends Controller
+	{
+		public function result()
+		{
+			
+		}
+		
+		public function form()
+		{
+			
+		}
+	}
+?>
+Действие form будет показывать форму:
+
+<?php
+	public function form()
+	{
+		return view('post.form');
+	}
+?>
+А действие result будет обрабатывать данные отправленной формы. Для этого мы должны внедрить в него объект запроса:
+
+<?php
+	public function result(Request $request)
+	{
+		
+	}
+?>
+Данные формы можно получить с помощью метода input объекта запроса. Параметром этот метод принимает имя инпута. Давайте получим и выведем отправленные данные:
+
+<?php
+	public function result(Request $request)
+	{
+		dump($request->input('title'));
+		dump($request->input('slug'));
+	}
+?>
+А теперь передадим данные нашей формы в представление:
+
+<?php
+	public function result(Request $request)
+	{
+		$title = $request->input('title');
+		$slug  = $request->input('slug');
+		
+		return view('post.result', [
+			'title' => $title, 'slug' => $slug
+		]);
+	}
+?>
+В представлении метода result выведем переданные переменные:
+
+<h1>{{ $title }}</h1>
+<p>{{ $slug }}</p>
+№1⊗pplrPmFrSMG
+
+Сделайте форму с тремя инпутами, в которые будут вводиться числа. После отправки формы найдите сумму введенных чисел и передайте ее в представление.

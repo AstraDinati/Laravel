@@ -1,0 +1,49 @@
+Отправка форм методом POST в Laravel
+Давайте теперь научимся отправлять формы методом POST. Внесем необходимые изменения. Для начала в роуте, отвечающем за обработку формы, поменяем метод get на 
+метод post:
+
+<?php
+	Route::post('/result', [PostController::class, 'result']);
+?>
+Теперь в форме добавим атрибут method со значением POST:
+
+<form action="/result" method="POST">
+	<input name="title">
+	<input name="slug">
+	<input type="submit">
+</form>
+Далее по правилам Laravel нам необходимо добавить защиту от CSRF атаки. Технически мы должны в нашу форму добавить специальный скрытый инпут, содержащий секретную 
+строку (токен).
+
+На практике нам просто нужно вставить специальную команду Blade:
+
+<form action="/result" method="POST">
+	@csrf
+	<input name="title">
+	<input name="slug">
+	<input type="submit">
+</form>
+Это все изменения. Наш контроллер останется неизменным:
+
+<?php
+	class PostController extends Controller
+	{
+		public function result(Request $request)
+		{
+			$title = $request->input('title');
+			$slug  = $request->input('slug');
+			
+			return view('post.result', [
+				'title' => $title, 'slug' => $slug
+			]);
+		}
+		
+		public function form()
+		{
+			return view('post.form');
+		}
+	}
+?>
+№1⊗pplrPmFrSMP
+
+Сделайте форму, которая будет спрашивать имя, возраст и зарплату юзера. Отправьте эту форму методом POST.
