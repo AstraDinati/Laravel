@@ -46,9 +46,17 @@ Route::get('/qwerty123', [RolesController::class, 'show']);
 // Route::get('/result', [PostsController::class, 'result']);
 // Route::post('/result', [PostsController::class, 'result']);
 
-Route::match(['get', 'post'], '/form/{id}/{login}', [PostsController::class, 'form'])->where('id', '[0-9]+');
+// Route::match(['get', 'post'], '/form/{id}/{login}', [PostsController::class, 'form'])->where('id', '[0-9]+');
+
+Route::match(['get', 'post'], '/form', [PostsController::class, 'form'])->name('form');
+
+Route::get('/post/delete/{id}', [PostsController::class, 'delete'])->name('delete');
+
+Route::match(['get', 'post'], '/post/update/{id}', [PostsController::class, 'update'])->name('update');
 
 Route::match(['get', 'post'], '/test/method/', [PostsController::class, 'method']);
+
+Route::match(['get', 'post'], '/post/add/', [PostsController::class, 'add']);
 
 Route::get('/qwerty', [UsersController::class, 'show']);
 
