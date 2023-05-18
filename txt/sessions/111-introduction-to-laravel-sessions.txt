@@ -1,0 +1,41 @@
+Введение в сессии в Laravel
+В Laravel работа с сессиями осуществляется через объект запроса Request, который мы с вами уже использовали при работе с формами. Давайте подключим этот объект запроса:
+
+<?php
+	use Illuminate\Http\Request; // подключаем
+
+	class PostController.php extends Controller
+	{
+		public function index(Request $request) // выполняем инъекцию
+		{
+			
+		}
+	}
+?>
+Для обращения к сессии у объекта запроса следует вызвать метод session:
+
+<?php
+	class PostController extends Controller
+	{
+		public function index(Request $request)
+		{
+			$request->session();
+		}
+	}
+	
+?>
+Данный метод возвращает объект с сессией, после чего можно будет использовать методы этого объекта:
+
+<?php
+	class PostController extends Controller
+	{
+		public function index(Request $request)
+		{
+			dump($request->session()); // объект с методами
+		}
+	}
+	
+?>
+№1⊗pplrPmSsInr
+
+Получите в своем контроллере объект с сессией.

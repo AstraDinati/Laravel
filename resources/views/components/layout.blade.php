@@ -4,9 +4,11 @@
 <head>
     <title>{{ $title }}</title>
 </head>
-
 <body>
-    {{ $slot }}
+    <div class="wrapper">
+        <main>
+            {{ $slot }}
+        </main>
 </body>
 
 </html>

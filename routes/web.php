@@ -52,6 +52,20 @@ Route::match(['get', 'post'], '/form', [PostsController::class, 'form'])->name('
 
 Route::get('/post/delete/{id}', [PostsController::class, 'delete'])->name('delete');
 
+Route::match(['get', 'post'], '/post/index', [PostsController::class, 'index'])->name('index');
+
+Route::match(['get', 'post'], '/post/counter', [PostsController::class, 'counter'])->name('counter');
+
+Route::match(['get', 'post'], '/post/timer', [PostsController::class, 'timer'])->name('timer');
+
+Route::match(['get', 'post'], '/post/circ1', [PostsController::class, 'circ1'])->name('circ1');
+
+Route::match(['get', 'post'], '/post/circ2', [PostsController::class, 'circ2'])->name('circ2');
+
+Route::match(['get', 'post'], '/post/circ3', [PostsController::class, 'circ3'])->name('circ3');
+
+Route::match(['get', 'post'], '/post/circ4', [PostsController::class, 'circ4'])->name('circ4');
+
 Route::match(['get', 'post'], '/post/update/{id}', [PostsController::class, 'update'])->name('update');
 
 Route::match(['get', 'post'], '/test/method/', [PostsController::class, 'method']);
