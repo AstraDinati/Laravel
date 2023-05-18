@@ -1,0 +1,21 @@
+Редирект на именованные маршруты в Laravel
+Можно выполнить редирект на именованный роут. Давайте посмотрим на практике. Пусть у нас есть некоторый роут с именем:
+
+<?php
+	Route::get('blog/posts/all', [PostController.php::class, 'all'])
+		->name('blog');
+?>
+Давайте выполним редирект на этот роут:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show()
+		{
+			return redirect()->route('blog');
+		}
+	}
+?>
+№1⊗pplrPmRdNR
+
+Сделайте именованный маршрут. Выполните на него редирект с другого действия.

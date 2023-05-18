@@ -1,0 +1,32 @@
+Редирект на заданное действие контроллера в Laravel
+Можно выполнять редирект на заданное действие контроллера. Давайте, например, выполним редирект на действие index контроллера HomeController:
+
+<?php
+	use App\Http\Controllers\HomeController; // заюзаем контроллер
+	
+	class PostController extends Controller
+	{
+		public function show()
+		{
+			return redirect()->action([HomeController::class, 'index']);
+		}
+	}
+?>
+Если роут контроллера требует параметры, вы можете передать их вторым параметром метода action:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show1()
+		{
+			return redirect()->action([HomeController::class, 'index'],  ['id' => 1]);
+		}
+	}
+?>
+№1⊗pplrPmRdCA
+
+Сделайте отдельную страницу с формой для добавления юзера.
+
+№2⊗pplrPmRdCA
+
+После сохранения юзера выполните редирект на страницу со списком юзеров.

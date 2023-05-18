@@ -1,0 +1,46 @@
+Введение в редиректы в Laravel
+В Laravel при обращении к одному адресу можно осуществлять редирект на другой. Давайте посмотрим, как это делается. Пусть у нас есть вот такие маршруты:
+
+<?php
+	Route::get('/post/show1', [PostController::class, 'show1']);
+	Route::get('/post/show2', [PostController::class, 'show2']);
+?>
+Давайте по обращению к действиям контроллера будем выводить какие-нибудь строки:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show1()
+		{
+			return 'show1';
+		}
+		
+		public function show2()
+		{
+			return 'show2';
+		}
+	}
+?>
+Давайте теперь сделаем так, чтобы при обращению к первому действию выполнялась переадресация на второе действие:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show1()
+		{
+			return redirect('post/show2'); // перенаправляем на адрес
+		}
+		
+		public function show2()
+		{
+			return 'show2';
+		}
+	}
+?>
+№1⊗pplrPmRdInr
+
+Выполните редирект с одного действия контроллера на другой.
+
+№2⊗pplrPmRdInr
+
+Сделайте форму, спрашивающую у пользователя число. После отправки формы, если введено число от 1 до 10, выполните редирект на другое действие.
