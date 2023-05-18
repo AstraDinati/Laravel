@@ -1,0 +1,28 @@
+Отдача представления в качестве отклика в Laravel
+Если вам нужен доступ к методам объекта ответа, но вы хотите возвращать представление в качестве текста ответа, то вы можете использовать метод view:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show()
+		{
+			return response()->view('post.show');
+		}
+	}
+?>
+К этому методу можно, например, цеплять заголовки:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show()
+		{
+			return response()
+				->view('post.show')
+				->header('Content-Type', 'text/plain');
+		}
+	}
+?>
+№1⊗pplrPmORsRV
+
+Отдайте файл представления с каким-нибудь заголовком.

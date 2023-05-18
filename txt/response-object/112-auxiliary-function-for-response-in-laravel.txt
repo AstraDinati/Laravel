@@ -1,0 +1,15 @@
+Вспомогательная функция для ответа в Laravel
+Для удобства можно использовать вспомогательную глобальную функцию response:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show()
+		{
+			return response('text', 200);
+		}
+	}
+?>
+№1⊗pplrPmORsHF
+
+Отдайте в качестве ответа статус 404 и некоторый текст.

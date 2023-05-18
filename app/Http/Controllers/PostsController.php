@@ -12,9 +12,15 @@ class PostsController extends Controller
 {
     public function form()
     {
-        return view('posts.form', [
+        // return response('not found', '404');
+        // ->withHeaders([
+        //     'Content-Type' => 'text/plain',
+        //     'X-Header-One' => 'value',
+        //     'X-Header-Two' => 'value',
+        // ]);
+        return response()->view('posts.form', [
             'title' => 'form title', 'paginate' => Posts::paginate(15),
-        ]);
+        ])->header('Content-Type', 'text/plain');
     }
     public function add(Request $request)
     {

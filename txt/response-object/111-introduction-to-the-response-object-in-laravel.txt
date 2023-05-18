@@ -1,0 +1,47 @@
+Введение в объект ответа Response в Laravel
+Как вы уже знаете, обычно действия контроллеров возвращают результат работы функции view, то есть представление:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show()
+		{
+			return view('post.show'); // вернем представление
+		}
+	}
+?>
+Можно также просто вернуть текст:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show()
+		{
+			return 'text'; // вернем текст
+		}
+	}
+?>
+Существует и третий вариант - можно вернуть объект класса Response. Данный объект позволяет устанавливать код HTTP ответа, а также заголовки этого ответа. 
+Конструктор этого класса первым параметром принимает текст ответа, а вторым - код HTTP статуса (200, 404 и тп):
+
+<?php
+	new Response('текст', 'статус');
+?>
+Давайте, например, с помощью объекта Response вернем 404 ошибку:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show()
+		{
+			return new Response('не найдено', '404');
+		}
+	}
+?>
+№1⊗pplrPmORsInr
+
+Отдайте в качестве ответа статус 201 и некоторый текст.
+
+№2⊗pplrPmORsInr
+
+Отдайте в качестве ответа статус 404 и некоторый текст.

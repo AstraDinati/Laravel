@@ -1,0 +1,42 @@
+Заголовки ответа в Laravel
+К объекту ответа можно добавлять HTTP заголовки. Пример:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show()
+		{
+			return response('text', 200)
+				->header('Content-Type', 'text/plain');
+		}
+	}
+?>
+Можно использовать несколько методов header в виде цепочки для добавления нескольких заголовков в отклик:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show()
+		{
+			return response('Hello World', 200)
+				->header('Content-Type', 'text/plain')
+				->header('X-Header-One', 'value')
+				->header('X-Header-Two', 'value');
+		}
+	}
+?>
+Можно также отправлять несколько заголовков в виде массива, используя метод withHeaders:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show()
+		{
+			return response('text', 200)->withHeaders([
+				'Content-Type' => 'text/plain',
+				'X-Header-One' => 'value',
+				'X-Header-Two' => 'value',
+			]);
+		}
+	}
+?>
