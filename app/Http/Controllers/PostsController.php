@@ -7,6 +7,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use App\Models\Posts;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Cookie;
 
 class PostsController extends Controller
 {
@@ -20,7 +21,8 @@ class PostsController extends Controller
         // ]);
         return response()->view('posts.form', [
             'title' => 'form title', 'paginate' => Posts::paginate(15),
-        ])->header('Content-Type', 'text/plain');
+        ]);
+        // ->header('Content-Type', 'text/plain')
     }
     public function add(Request $request)
     {
@@ -83,6 +85,7 @@ class PostsController extends Controller
 
     public function circ1(Request $request)
     {
+        $request->
         $request->session()->put('time', time());
 
         return redirect()->route('form');
@@ -112,6 +115,25 @@ class PostsController extends Controller
             dump(session());
         }
         dump(session());
+    }
+
+    public function cookieCounter(Request $request)
+    {
+        $value = $request->cookie('name');
+        $value++;
+
+        return response()->view('posts.cookieCounter', ['title' => 'cookieCounter title', 'value' => $value])->cookie('name', $value);
+    }
+
+    public function queue(Request $request)
+    {
+        Cookie::queue('name1', 1, 10);
+        Cookie::queue('name2', 2, 10);
+        Cookie::queue('name3', 3, 10);
+
+        $value = $request->cookie('name1') + $request->cookie('name2') + $request->cookie('name3');
+
+        return response()->view('posts.cookieCounter', ['title' => 'queue title', 'value' => $value]);
     }
     // public function form(Request $request, $id, $login)
     // {

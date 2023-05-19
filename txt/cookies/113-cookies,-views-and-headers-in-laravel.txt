@@ -1,0 +1,30 @@
+Куки, представления и заголовки в Laravel
+Можно одновременно отдавать представление и цеплять к ответу куку:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show()
+		{
+			return response()
+				->view('post.show')
+				->cookie('name', 'value', 10);
+		}
+	}
+	
+?>
+Можно также прицеплять HTTP заголовки:
+
+<?php
+	class PostController extends Controller
+	{
+		public function show()
+		{
+			return response()
+				->view('test.show')
+				->cookie('name', 'value', 10)
+				->header('Content-Type', 'text/plain');
+		}
+	}
+	
+?>

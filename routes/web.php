@@ -66,6 +66,10 @@ Route::match(['get', 'post'], '/post/circ3', [PostsController::class, 'circ3'])-
 
 Route::match(['get', 'post'], '/post/circ4', [PostsController::class, 'circ4'])->name('circ4');
 
+Route::match(['get', 'post'], '/post/start', [PostsController::class, 'cookieCounter'])->name('start');
+
+Route::match(['get', 'post'], '/post/queue', [PostsController::class, 'queue'])->name('queue');
+
 Route::match(['get', 'post'], '/post/update/{id}', [PostsController::class, 'update'])->name('update');
 
 Route::match(['get', 'post'], '/test/method/', [PostsController::class, 'method']);

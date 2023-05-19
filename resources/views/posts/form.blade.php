@@ -19,10 +19,12 @@
     <a href="{{ route('counter') }}">счетчик</a><br>
     <a href="{{ route('timer') }}">таймер</a><br>
 
-    <a href="{{ route('circ1') }}">установить</a><br>
+    <a href="{{ route('circ1') }}">установить сессию</a><br>
     <a href="{{ route('circ2') }}">вывести и удалить</a><br>
     <a href="{{ route('circ3') }}">удалить все данные из сессии</a><br>
-    <a href="{{ route('circ4') }}">вывести все данные из сессии</a>
+    <a href="{{ route('circ4') }}">вывести все данные из сессии</a><br>
+    <a href="{{ route('start') }}">счетчик куки</a><br>
+    <a href="{{ route('queue') }}">queue куки</a><br>
     <x-alert type="error" message="text" /> 
     <br>
     <table>
