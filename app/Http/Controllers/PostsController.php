@@ -104,6 +104,11 @@ class PostsController extends Controller
     {
         dump($request->session());
         $request->session()->flush();
+
+        $request->session()->flash('status', 'Task was successful!');
+        return response()->view('posts.form', [
+            'title' => 'form title', 'paginate' => Posts::paginate(15),
+        ]);
     }
 
     public function circ4(Request $request)
